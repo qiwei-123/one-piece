@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jsonp</title>
+    <style>
+        #result {
+            width: 300px;
+            height: 200px;
+            border: 1px #89b solid;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <h2 id="page-header">Jquery 发送 AJAX 请求</h2>
+        <button id="btn btn-primary">GET</button>
+        <button id="btn btn-danger">POST</button>
+        <button id="btn btn-info">通用型方法ajax</button>
+
+    </div>
+</body>
+<script>
+    $('button').eq(0).click(function(){
+        $.get('http://127.0.0.1:8000/jquery-server');
+    })
+
+</script>
+
+</html>

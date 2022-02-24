@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>v-on_2</title>
+    </head>
+
+    <body>
+        <!-- 
+        事件监听
+        如监听用户发生的时间 ：点击 拖拽 键盘事件等
+        在vue 中使用v-on指令
+        
+    - v-on 
+        作用: 绑定事件监听器
+        缩写: @
+        参数: event 
+        -->
+        <div id="demo">
+            <h2>{{fullName}}</h2>
+            <button @click='increment'>+</button>
+            <button @click='reduce'>-</button>
+            <br>
+            <br>
+            <!-- 
+                在事件定义时 写方法时省略了小括号 但是方法本身是需要一个参数的 此时
+                vue会默认将浏览器生产的event事件对象作为参数传入到方法
+             -->
+            <!-- 123 -->
+            <button @click='btnClick1(123)'>test1</button>
+            <!-- 未传参数则 undefined -->
+            <button @click='btnClick1()'>test2</button>
+            <!-- 浏览器event事件对象 -->
+            <button @click='btnClick1'>test3</button>
+            <!-- 在调用方式 如何手动获取到浏览器参数的event对象: $event -->
+            <button @click='btnClick2(1423, $event)'>test4</button>
+        </div>
+        <!-- 
+            修饰符
+            .stop 调用event.stopPropagation()
+            .prevent 调用event.preventDefault
+            .{keyCode | keyAlias} 当事件是从特定键值触发时才触发回调
+            .native 监听组件根元素的原生事件
+            .once 只触发一次回调
+         -->
+    </body>
+    <script src="../vue/vue.js"></script>
+    <script>
+        const demo = new Vue({
+            el: '#demo',
+            data: {
+                message: 'vue计数器',
+                counter: 0,
+            },
+            methods: {
+                increment() {
+                    this.counter++
+                },
+                reduce() {
+                    this.counter--
+                },
+                btnClick1(event) {
+                    console.log('btnClick1', event);
+                },
+                btnClick2(abc, event) {
+                    console.log('两个参数  ', abc, event);
+
+                }
+            },
+            computed: {
+                fullName() {
+                    return this.message + ':' + ' ' + this.counter
+                }
+            }
+        })
+    </script>
+
+    </html>

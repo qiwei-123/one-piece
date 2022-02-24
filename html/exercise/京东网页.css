@@ -1,0 +1,297 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+ a {
+     text-decoration: none;
+ }
+#top {
+    width: 100%;
+    height: 31px;
+    background-color: #E3E4E5;
+}
+.top_li {
+    text-decoration: none;
+    float: left;
+    list-style: none;
+    
+}
+/* .JD_i {
+    text-align: center;
+} */
+
+ul {
+    margin-left: 300px;
+}
+
+#container {
+    margin: 0px 0px 5px 0px;
+    width: 100%;
+    height: 140px;
+    background-color: rgb(218, 192, 192);
+
+}
+.container_k {
+    margin: 0px auto;
+    width: 1190px;
+    
+}
+.photo_JD_kuai {
+    /* display: inline-block; */
+    margin: 10px auto;
+    /* float: left; */
+}
+.photo_JD {
+    width: 190px;
+    height: 120px;
+}
+/* 搜索框——CSS */
+#sousuo_all {
+    display: inline-block;
+    margin-left: 20px;
+    transform:translateY(-20px);
+}
+.sousuo_1{
+    border: 1px #e1251b solid;
+    display: inline-block;
+}
+
+/* 购物车边框改变颜色  没做出来 失败 */
+#container .shopping_box :hover {
+    border: 1 px red solid;
+}
+.sousuo_btn {
+    width: 488px;
+    height: 32px;
+    float: left;
+}
+.aa{
+    float: left;
+   width: 36px;
+   height: 32px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+}
+.tubiao_img {
+    width: 20px;
+    height: 22px;
+    /* text-align: center; */
+    /* margin: 10% 30%; */
+}
+.ss_botton_a {
+    text-decoration: none;
+    color: #999999;
+    margin: 0px 10px 0px 0px;
+}
+.ss_botton_a1 {
+    text-decoration: none;
+    color: #999999;
+    margin: 0px 10px 0px 0px;
+    animation: anim 3s infinite;
+    -webkit-animation: anim 3s infinite;
+}
+@keyframes anim
+{
+    0%{left: 0px;top: 0px;color: red;}
+    25%{left: 0;top: 0px;color: blue;}
+    50%{left: 0;top: 0;color: green;}
+    75%{left: 0px;top: 0;color: pink;}
+    100%{left: 0px;top: 0px;color: red;}
+} 
+
+.shopping_box {
+    width: 132px;
+    height: 36px;
+    border: 1px rgb(184, 174, 174) solid;
+    float: left;
+    /* clear: both; */
+}
+
+i {
+    /* text-align: center; */
+    margin: 10px;
+
+}
+.img_shopping {
+    width: 20px;
+    height: 20px;
+    margin-right: 13px;
+}
+.shopping_car {
+    text-decoration: none;
+    color: red;
+    font-size: 8px;
+
+}
+.sousuo_right_gg {
+float: left;
+}
+#body {
+    background-color: #666;
+    width: 1190px;
+    height: 900px;
+    margin: 10px auto;
+}
+
+
+
+
+
+/* 左侧 */
+.left_nav{
+    width: 190px;
+    height: 470px;
+    /* padding: 10px 0px; */
+    background-color: pink;
+    margin: 0px 10px  0px  0px;
+    float: left;
+}
+
+.left_nav .item{
+    height: 25px;
+/* 让文字在父元素中垂直居中 只需将父元素的line-height设置为一个和父元素heigh一样的值 */
+    line-height: 25px;
+    padding-left: 18px;
+}
+
+/* 为item设置一个鼠标移入的状态 */
+.left_nav .item:hover{
+    background-color: #d9d9d9;
+}
+
+/* 设置超链接样式 */
+.item a{
+    font-size: 14px;
+    /* 设置字体颜色 */
+    color: #333;
+    /* 去除字体下划线 */
+    text-decoration: none;
+}
+
+/* 设置鼠标放在超链接时显示的样式 */
+.item a:hover{
+    color: #c81623;
+}
+
+.item_span{
+    font-size: 13px;
+    color: #636363;
+    padding: 0px 2px;
+}
+/* 轮播图CSS */
+/* #photo_lb {
+    width: 600px;
+    height: 480px;
+} */
+
+.ph_lb {
+    width: 590px;
+    height: 470px;
+    margin: 0px 10px  0px  0px;
+    float: left;
+    
+}
+
+/* 右侧三个小广告图片 */
+.style_ul{
+    background-color: #f4f4f4;
+    width: 190px;
+    height: 470px;
+    overflow: hidden;
+
+    /* 调整ul在页面中的位置 */
+    /* margin: 50px auto; */
+}
+/* 设置li的位置 */
+/* li:not(:last-child) 可将最后一个li 多出的margin去掉*/ 
+#photo_right li{
+    margin-bottom: 9px;
+}
+#photo_right img{
+    width: 100%;
+}
+
+/* 页面整体右侧部分 */
+#body-right {
+    clear: both;
+}
+._dog {
+    width: 40px;
+    height: 40px;
+}
+
+.body-right-01 {
+    width: 190px;
+    height: 102px;
+    background-color:rgb(250, 244, 244);
+
+}
+
+.tp_01 {
+    float: left;
+}
+._user{
+    margin: 2px 18px;
+    color: #666666;
+    float: left;
+}
+._user-1 {
+    font-size: 15px;
+    color: #666666;
+}
+._user-2 {
+    font-size: 13px;
+    color: #333;
+}
+._xrfl {
+    width: 70px;
+    height: 25px;
+    background-color: #c81623;
+    margin: 20px;
+    float: left;
+}
+._xrfl a {
+    font-size: 12px;
+    /* text-align: center; */
+    color: #fff;
+    margin: 0px auto;
+}
+._xrfl span :hover {
+    background-color: black;
+}
+
+._plus {
+    width: 70px;
+    height: 25px;
+    background-color: #363634;
+    margin: 19px 1px;
+    float: left;
+}
+._plus a {
+    font-size: 12px;
+    /* text-align: center; */
+    color: #fff;
+}
+._plus span :hover{
+    background-color: black;
+
+}
+.body-right-02 {
+    width: 190px;
+    height: 130px;
+    background-color: pink;
+}
+.two_1 .jdkb {
+    width: 56px;
+    height: 20px;
+    margin: 0px 5px;    
+    font-size: 18px;
+}
+.body-right-03 {
+    width: 190px;
+    height: 198px;
+    background-color: #bfa;
+    text-align: center;
+}
+

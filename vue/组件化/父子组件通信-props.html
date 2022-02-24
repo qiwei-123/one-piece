@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父子组件通信-props</title>
+</head>
+
+<body>
+  <div id="cc">
+    <cpn :cmovies="movies" :cmessage="message"></cpn>
+  </div>
+</body>
+<template id="cpn">
+  <!-- 子组件无法直接使用父组件的数据 -->
+  <!-- 
+    1.创建一个Vue实例作为父组件 将子组件注册
+    2.创建子组件 props: ['一变量名'] 
+    3.创建template标签 与 2 绑定id 输入子组件变量名
+    4.在html中 创建cpn   v-bind:子组件变量名= "父组件变量名"
+  
+
+   -->
+  <div>
+    <h1>{{cmovies}}</h1>
+    <p>{{citem}}</p>
+    <p>{{}}</p>
+  </div>
+</template>
+<script src="../vue.js"></script>
+<script>
+  // 父传子 : props
+  const cpn = {
+    template: '#cpn',
+    // props: ['cmovies', 'cmessage'],
+    props: {
+      cmovies: Array,  // 指定传入的数据类型
+      cmessage: String,
+      cnumber: Number,
+      citem: {
+        type: String,
+        default: '未传入值时,显示的文本内容',   // default 未传值时 显示的默认值 
+        required: true                          // 当required为ture时 是必传值 否则报错
+      },
+    },
+    data() {
+      return {
+
+      }
+    }
+  }
+  const cc = new Vue({
+    el: '#cc',
+    data: {
+      message: 'hello world',
+      movies: ['海贼王', '火影忍者', '进击的巨人'],
+    },
+    components: {
+      cpn
+    }
+  });
+
+
+</script>
+
+
+</html>

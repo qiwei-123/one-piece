@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // var a = [9, 7, 8, 6, 1, 2, 3, 4, 5];
+
+    // for (var i = 0; i < a.length - 1; i++) {
+    //     for (var j = 0; j < a.length - i - 1; j++) {
+    //         if(a[j]>a[j+1]){
+    //             var b = a[j];
+    //             a[j] = a[j+1];
+    //             a[j+1] = b;
+    //         }
+    //     }
+    // }
+    function bumble(arr) {
+        for (var i = 0; i < arr.length - 1; i++) {
+            for (var j = 0; j < arr.length - 1 - i; j++){
+                if(arr[j+1] < arr[j]){
+                    [arr[j+1],arr[j]] = [arr[j],arr[j+1]]
+                    console.log('I = '+j);
+                }
+            }
+        }
+        return arr
+    }
+    var arr = [9,8,7,5,6,3,1];
+    console.log(bumble(arr));
+
+
+    // console.log('原无序数组 ： ' + a);
+    // console.log('排列后有序数组 ： ' + b);
+    // i = 0 j = 012345 5 6 3 1  -7 8 9
+</script>
+
+</html>

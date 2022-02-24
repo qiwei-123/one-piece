@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>作用域插槽</title>
+</head>
+
+<body>
+  <div id="demo">
+    <cpn>
+      <template slot-scope="slot">
+        <span>{{slot.data.join(' - ')}}</span>
+      </template>
+    </cpn>
+  </div>
+
+</body>
+
+<template id="tem">
+  <div>
+    <slot :data="pLauguages">
+      <ul>
+        <li v-for="item in pLauguages">{{item}}</li>
+      </ul>
+    </slot>
+  </div>
+</template>
+
+<script src="../vue/vue.js"></script>
+<script>
+  const demo = new Vue({
+    el: '#demo',
+    data: {
+      isShow: true
+    },
+    components: {
+      cpn: {
+        template: '#tem',
+        data() {
+          return {
+            pLauguages: ['C++', 'Java', 'Vue', 'Swift', 'Go']
+          }
+        }
+      }
+    }
+  })
+</script>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./10.06-test_02.css">
+    <style>
+        body {
+            background-color: blanchedalmond;
+        }
+
+        .box {
+            background-color: #fafafa;
+            width: 500px;
+            /* height: 450px; */
+            /* border-top: gray solid 1px; */
+            margin: 10px auto;
+        }
+
+        .new_title {
+            display: inline-block;
+            border-top: red solid 1px;
+            /* 此时红色的上边框是在外边框下面，需上移则会覆盖在外边框上  "+"是向下移，"-"向上移*/
+            margin: -1px;
+            /* font-weight: bold; */
+            padding: 10px;
+        }
+
+        .new_title a {
+            /* 文字加粗 */
+            /* margin-top: 10px; */
+            font-weight: bold;
+        }
+
+        .photo_tiyu {
+            width: 320px;
+            height: 200px;
+        }
+
+        li {
+            color: gray;
+            font-size: 18px;
+        }
+        li::before {
+            content:icon;
+        }
+        a:hover {
+            color: red;
+        }
+
+        a {
+            color: black;
+            text-decoration: none;
+        }
+
+        /* img{
+    width: 190px;
+    height: 470px;
+}
+li{
+    list-style: none;
+} */
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <h3 class="new_title"><a href="">体育</a></h3>
+        <div class="news_img">
+            <a href="">
+                <img src="../photo_cj/u=320785158,1620754809&fm=26&fmt=auto.webp" alt="" class="photo_tiyu">
+                <h3>这是</h3>
+            </a>
+        </div>
+        <ul>
+            <li><a href="#">乔治：我爱La</a></li>
+            <li><a href="#">格林：三年前降薪就在等KD，特制Tshirt嘲讽LBJ</a></li>
+            <li><a href="#">塔克4000双鞋让保罗羡慕嫉妒 乔丹被震惊</a></li>
+            <li><a href="#">CBA下季新赛制：常规赛4组循环 增至6轮</a></li>
+        </ul>
+    </div>
+    <!-- <div class="jd">
+        <ul>
+            <li><a href="http://www.baidu.com"><img src="../photo_cj/jd_01.webp" alt=""></a></li>
+            <li><a href="http://www.jd.com"><img src="../photo_cj/jd_02.webp" alt=""></a></li>
+            <li><a href="http://www.taobao.com"><img src="../photo_cj/jd——03.webp" alt=""></a></li>
+        </ul>
+    </div> -->
+</body>
+
+</html>

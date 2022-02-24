@@ -1,0 +1,80 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: pink;
+            padding: 10px;
+            border: 10px purple solid;
+
+            /* 不会影响布局
+            outline: rgba(0,0,0,.5); */
+        }
+
+         /* 待考究的问题 */
+
+        
+
+        /* 
+        默认情况下，盒子可见框的大小由内容区，内边距和边框共同决定
+
+        eg : box-sizing: border-box
+                         content-box
+        box-sizing 用来设置盒子尺寸的计算方式(设置width和heigh的作用)
+            可选值 :
+            content-box 默认值，宽度和高度用来设置内容区的大小
+            (设置此属性 则 "元素" 的  "w  h"为100px)
+            border-box 宽度和高度用来设置整个盒子可见框的大小
+            (设置此属性之后 无论怎么设置盒子的 border以及padding  盒子的大小都为所设置的  100px)
+        */
+        .box2 {
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            margin: 100px 10px;
+            /* box-shadow
+            第一个值，水平偏移量,正值向右移动，负值向左移动
+            第二个值，垂直偏移量，正值向下移动，负值向上移动
+            第三个值，阴影的模糊半径
+            第四个值，阴影的颜色 
+            阴影不影响页面布局
+            */
+            box-shadow: 15px 15px 20px rgba(0, 0, 0, .5);
+        }
+
+        .box3 {
+            width: 200px;
+            height: 200px;
+            margin: 100px 10px;
+            background-color: salmon;
+            /* 无论div多大  设置50% 都为圆形 */
+            border-radius: 50%;
+            /* border-top-left-radius: 100px 50px; */
+
+            /*  border-radius: ; 用来设置圆角，圆角设置的是圆的半径大小
+                输入两个值，则为水平以及垂直
+                也可直接设置四个值，左上 右上 右下  左下
+                           三个值，左上 右上/左下 右下  
+                           两个值， 左上/右下  右上/左下
+            border-top-left-radius: ;
+            border-bottom-left-radius: ;
+            border-top-right-radius: ;
+            border-bottom-right-radius: ; 
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+
+</html>

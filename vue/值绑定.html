@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>值绑定</title>
+</head>
+
+<body>
+  <!-- 动态值绑定 -->
+  <div id="demo">
+    <!-- :for="item"  :id="item" 使鼠标点击文字时 焦点聚集在勾选框 -->
+    <label :for="item" v-for="item in hobbiesArr">
+      <input type="checkbox" :value="item" :id="item" v-model="hobbies">{{item}}
+    </label>
+    <h2>所选爱好 : {{hobbies}}</h2>
+  </div>
+</body>
+<script src="../vue/vue.js"></script>
+<script>
+  const demo = new Vue({
+    el: '#demo',
+    data: {
+      hobbiesArr: ['篮球', '羽毛球', '足球', 'xixi', '台球'],
+      hobbies: []
+    }
+  })
+</script>
+
+</html>

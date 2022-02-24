@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数组</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 创建一个有重复数字的数组
+    var arr = [1, 2, 2, 2, 5, 1, 2, 5, 9];
+    // 去除数组中重复的数字
+    for (i = 0; i < arr.length; i++) {
+
+        console.log(arr[i]);
+
+        for (j = i + 1; j < arr.length; j++) {
+            // 判断两个值是否相等
+            if (arr[i] == arr[j]) {
+                // 如果相等则证明出现了重复的元素,则删除J对应的元素
+                arr.splice(j, 1);
+                // 当删除了当前J所在的元素易购,后边的元素会自动补位
+                // 此时将不会再比较这个元素,此时需要再次比较J所在的位置
+                // 则应J自减,再进行一次比较
+                j--;
+            } else {
+                // console.log(arr[j]);
+
+            }
+        }
+    }
+    console.log(arr);
+
+</script>
+
+</html>

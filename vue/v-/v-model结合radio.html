@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model结合radio</title>
+</head>
+
+<body>
+
+  <div id="demo">
+
+    <label for="male">
+      <!-- 
+        设置name为sex 只可选一个
+        type="radio"
+        name="sex"
+        v-model="sex"
+        value="男"
+        为重要点
+      -->
+      <input type="radio" name="sex" id="male" v-model="sex" value="男">男
+    </label>
+    <label for="female">
+      <input type="radio" name="sex" id="female" v-model="sex" value="女">女
+    </label>
+    <br>
+    <h2>选择的性别为 : {{sex}} </h2>
+  </div>
+
+</body>
+<script src="../vue.js"></script>
+<script>
+
+
+  const model = new Vue({
+    el: '#demo',
+    data: {
+      message: '',
+      sex: ''
+    }
+  })
+
+</script>
+
+</html>

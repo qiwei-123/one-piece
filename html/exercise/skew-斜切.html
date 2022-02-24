@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS斜切</title>
+    <style>
+        #menu {
+            display: flex;
+            gap: 10px;
+        }
+
+        .menu_item {
+            height: 50px;
+            width: 100px;
+            line-height: 50px;
+            text-align: center;
+            position: relative;
+            color: white;
+            /* color: white; */
+        }
+
+        .up {
+            transform: skewX(30deg);
+            height: 25px;
+            background-color: deepskyblue;
+        }
+
+        .down {
+            transform: skewX(-30deg);
+            height: 25px;
+            background-color: deepskyblue;
+        }
+
+        .text {
+            position: absolute;
+            left: 0px; right: 0px;top: 0px;bottom: 0px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="id">
+        <div class="menu_item">
+            <div class="up"></div>
+            <div class="down"></div>
+            <div class="text">选项1</div>
+        </div>
+        <div class="menu_item">
+            <div class="up"></div>
+            <div class="down"></div>
+            <div class="text">选项2</div>
+        </div>
+        <div class="menu_item">
+            <div class="up"></div>
+            <div class="down"></div>
+            <div class="text">选项3</div>
+        </div>
+        <div class="menu_item">
+            <div class="up"></div>
+            <div class="down"></div>
+            <div class="text">选项4</div>
+        </div>
+        <div class="menu_item">
+            <div class="up"></div>
+            <div class="down"></div>
+            <div class="text">选项5</div>
+        </div>
+
+    </div>
+</body>
+
+</html>

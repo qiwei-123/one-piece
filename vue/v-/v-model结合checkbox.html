@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model结合checkbox</title>
+</head>
+
+<body>
+  <div id="demo">
+    <!-- 单选框 流氓协议 -->
+    <label for="protocol">
+      <input type="checkbox" id="protocol" v-model="isProtocol"> 同意协议
+      <br>
+      <br>
+      <!-- 
+        v-model="isProtocol"
+        当勾选(同意)时 按钮可用
+       -->
+
+      <button :disabled="!isProtocol">下一步(同意流氓协议后,才可用的按钮)</button>
+    </label>
+    <!-- 多选框 -->
+
+  </div>
+  <div id="demo2">
+    <label for="many">
+      <input type="checkbox" value="吃饭" v-model="hobbies">吃饭
+      <input type="checkbox" value="睡觉" v-model="hobbies">睡觉
+      <input type="checkbox" value="打豆豆" v-model="hobbies">打豆豆
+    </label>
+    <h2>服务器获取到的爱好 : {{hobbies}}</h2>
+
+  </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+
+
+  const model = new Vue({
+    el: '#demo',
+    data: {
+      message: '',
+      // 页面加载后 checkbox未勾选 以及 按钮不可用
+      isProtocol: false
+    },
+  })
+
+  const model2 = new Vue({
+    el: '#demo2',
+    data: {
+      hobbies: []
+    },
+  })
+
+</script>
+
+</html>

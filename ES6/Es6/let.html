@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let</title>
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    h1 {
+        color: salmon;
+        border-bottom: 1px dashed #ccc;
+    }
+
+    #container :nth-child(2) {
+        width: 100px;
+        height: 70px;
+        border: 1px red solid;
+        position: absolute;
+        margin-left: 10px;
+        margin-top: 30px;
+        /* margin-right: 10px; */
+    }
+    #container :nth-child(3) {
+        width: 100px;
+        height: 70px;
+        border: 1px red solid;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 30px;
+        /* margin-right: 10px; */
+    }
+    #container :nth-child(4) {
+        width: 100px;
+        height: 70px;
+        border: 1px red solid;
+        position: absolute;
+        margin-left: 230px;
+        margin-top: 30px;
+        /* margin-right: 10px; */
+    }
+
+    /* .box2 {
+        width: 100px;
+        height: 70px;
+        border: 1px red solid;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 30px;
+
+    }
+    .box3 {
+        width: 100px;
+        height: 70px;
+        border: 1px red solid;
+        position: absolute;
+        margin-left: 230px;
+        margin-top: 30px;
+
+    } */
+</style>
+
+<body>
+    <div id="container">
+        <h1>点击切换块的颜色</h1>
+        <div class="box"></div>
+        <div class="box"></div>
+        <div class="box"></div>
+
+    </div>
+</body>
+<script>
+    /*
+        1.变量不能重复声明
+        let star = '猪八戒';
+        let star = 'pig';
+        2.块儿级作用域 全局，函数 eval
+        if while for else
+        {
+            let girl = '张晶';
+        }
+        console.log(girl);
+        此时无法打印
+        3.不存在变量提升
+        console.log(song);
+        let song = '我爱中国';
+
+        4.不能影响作用域链
+    {
+        let school = '一中';
+        function fn() {
+            console.log(school);
+        }
+        fn();
+    }
+
+    */
+    /* let实践练习 */
+    // function myClick(obj,idStr) {
+    //   var btn = 
+
+    // };
+    window.onload = function () {
+        let box = document.getElementsByClassName("box");
+        for(let i=0;i<box.length;i++){
+            box[i].onclick = function name(params) {
+                this.style.background = 'red';
+                // console.log(box);
+            };
+
+        };
+
+    };
+</script>
+
+</html>

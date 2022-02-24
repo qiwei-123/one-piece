@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind动态绑定style(数组语法)</title>
+</head>
+
+<body>
+    <div id="sty">
+        <!-- 
+            此处textStyle不加引号 是变量直接解析
+        -->
+        <p :style="[textStyle, textStyle1]">{{text}}</p>
+        <h2 :style="">{{text}}</h2>
+    </div>
+
+</body>
+<script src="../vue.js"></script>
+<script>
+    const styl = new Vue({
+        el: '#sty',
+        data: {
+            text: '测试',
+            // 30px 以及 blue 需加引号
+
+            textStyle: { fontSize: '30px' },
+            textStyle1: { backgroundColor: 'blue' }
+        },
+    })
+</script>
+
+</html>

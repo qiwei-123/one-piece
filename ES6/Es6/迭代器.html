@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器-自定义遍历数组</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+    1. iterator 为所有数据结构，提供了一种统一的访问机制，即for...of循环 当使用for...of循环遍历某种数据结构时，该循环会自动去寻找 Iterator
+    2. 一种数据结构只要部署了 Iterator 接口，我们就称这种数据结构是“可遍历的”（iterable）
+    3. 默认的 Iterator 接口部署在数据结构的Symbol.iterator属性，或者说，一个数据结构只要具有Symbol.iterator属性，就可以认为是“可遍历的”
+    4. 原生具备 Iterator 接口的数据结构如下。
+        Array
+        Map
+        Set
+        String
+        TypedArray
+        函数的 arguments 对象
+        NodeList 对象
+    */
+    /*
+    
+    // Symbol.iterator
+    const book = ['唐僧','孙悟空','猪八戒','沙和尚'];
+    // for...of遍历数组
+    for (let result of book) {
+        console.log(result);
+    }
+    */
+   const test = {
+       name : '英雄联盟',
+       arr : [
+           '卡特琳娜',
+           '阿卡丽',
+           '墨菲特',
+           '伊丽丝'
+       ],
+       [Symbol.iterator](){
+           let index = 0;
+           let _this = this;
+           return{
+               next:function(){
+                   if(index<_this.arr.length){
+                        const result = {value:_this.arr[index],done:false};
+                        // 自增
+                        index++;
+                        // 返回结果
+                        return result;
+                   }else {
+                       return {value:undefined, done:true}
+                   }
+               }
+           };
+       }
+   }
+   for (const end of test) {
+       console.log(end);
+   }
+</script>
+</html>

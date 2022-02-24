@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    //  普通方法创建一个对象
+    // var obj = {
+    //     name: "卡特琳娜",
+    //     age: 18,
+    //     gender: "woman",
+    //     sayName: function fun() {
+    //         console.log(this.name);
+    //     }
+    // };
+    // var obj2 = {
+    //     name: "格雷福斯",
+    //     age: 22,
+    //     gender: "man",
+    //     sayName: function fun() {
+    //         console.log(this.name);
+    //     }
+    // };
+    // obj.sayName();
+    //--------------------------------------------------------------------------
+
+    //使用工厂方法创建对象
+    function creatPerson(name, age, gender) {
+        //创建一个新的对象
+        var obj = new Object();
+        //向对象中添加属性
+        obj.name = name;
+        obj.age = age;
+        obj.gender = gender;
+        obj.sayName = function () {
+            console.log(this.name);
+        }
+        //将新的对象返回
+        return obj;
+    };
+    var obj1 = creatPerson("卡特琳娜", 18, "woman");
+    var obj2 = creatPerson("格雷福斯", 22, "man");
+    var obj3 = creatPerson("铸星龙王", 1231, "unknow");
+    var obj4 = creatPerson("蒙多", 42, "man");
+    console.log(obj1);
+    console.log(obj2);
+    console.log(obj3);
+    console.log(obj4);
+</script>
+
+</html>

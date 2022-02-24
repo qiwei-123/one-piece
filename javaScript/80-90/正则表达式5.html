@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式5</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        电子邮件
+    任意字母数字下划线   .任意字母数字下划线  @ 任意字母数字  任意字母(2-5位)  .任意字母(2-5位)
+    var email = "2716113840@qq.com";
+    var emailReg = /^\w{3,}(\.\w+)*@[A-z0-9]*(\.(\w){2,5}){1,2}$/;
+    console.log(emailReg.test(email));
+    */
+
+    /*
+        自定义电子邮件格式
+        8-11位任意字母 数字 下划线  + @ + 2-5位字母 +  .  +  com结尾
+        ^\w{8,11}                    @   [A-z]{2,5}   \.     (com)$
+
+    var email = "345__6ee78@qq.com";
+    var emailReg = /^\w{8,11}@[A-z]{2,5}\.(com)$/;
+    console.log(emailReg.test(email));
+    */
+
+
+</script>
+</html>

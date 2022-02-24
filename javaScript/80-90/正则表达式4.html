@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式4</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 创建一个正则表达式, 用来检查一个字符串是否是一个合法的手机号
+    /*
+        1.以1开头
+        2.3-9的任意数字
+        3.3位以后任意数字,长度为9
+        1      8    249482352
+        ^1  [3-9]   [0-9]{9}&
+    var  phoneStr = "18249482352";
+    var phoneReg = /^1[3-9][0-9]{9}&/ig;
+    console.log(phoneReg.test(phoneStr));
+    */
+    /*
+
+    \w
+    - 任意字母,数字 _  [A-z0-9_]
+    \W
+    - 除了字母,数字 _  [^A-z0-9_]
+    \d
+    - 任意的数字 [0-9]
+    \D
+    - 除了数字 [^0-9]
+    \s
+    - 空格
+    \S
+    - 除了空格
+    \b
+
+    \B
+ 
+    */
+
+    // 接受用户的输入
+    //    var str = prompt("请输入你的用户名");
+    var str = "         xi    xi         ";
+    // 去除开头所有空格
+    var sresult = str.replace(/^\s*/g,"");
+    // 去除结尾所有空格
+    var eresult = str.replace(/\s*$/g,"")
+    console.log("原字符串 : "+str);
+    console.log("去除开头空格后的字符串 : "+sresult);
+    console.log("去除结尾空格后的字符串 : "+eresult);
+    // 去除输入内容中的所有空格
+    var aresult = str.replace(/\s*/g,"");
+    console.log("去除所有空格后的字符串 : "+aresult);
+</script>
+
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>重复请求问题
+    </title>
+    <style>
+        #div {
+            width: 300px;
+            height: 200px;
+            /* background-color: pink; */
+            margin: 0px auto;
+            text-align: center;
+            line-height: 200px;
+
+        }
+
+        button {
+            margin-left: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div">
+        <button>点击发送请求</button>
+        <button>点击取消请求</button>
+    </div>
+</body>
+<script>
+    const btns = document.querySelectorAll('button');
+    let x = null;
+    let isSending = false;  // 标识变量 是否正在发送ajax请求
+    btns[0].onclick = function () {
+        // 判断标识变量
+        // 如果正在发送 则取消上一个请求,创建一个新请求
+        if (isSending) x.abort();
+        x = new XMLHttpRequest();
+        // 修改标识变量的值
+        isSending = true;
+        x.open('GET', 'http://127.0.0.1:8000/delay');
+        x.send();
+        x.onreadystatechange = function () {
+            if (x.readyState === 4) {
+                // 此处无需加状态码判断 可能该请求是一个失败的请求
+                // 如果在成功里做判断 则该变量永不会为false
+                isSending = false;
+            }
+        }
+    };
+    // abort
+    btns[1].onclick = function () {
+        x.abort();
+    };
+
+
+</script>
+
+</html>

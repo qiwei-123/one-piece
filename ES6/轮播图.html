@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>轮播图</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+
+        /* 设置轮播图样式 */
+        #all {
+            width: 590px;
+            height: 470px;
+            /* overflow: hidden; */
+            margin: 40px auto 0px auto;
+            position: relative;
+        }
+
+        /* 取消a标签默认样式 */
+        #all ul {
+            list-style: none;
+        }
+
+        /* 使一组图片因绝对定位重叠在一起 */
+        #imgList a {
+            /* position: absolute; */
+            float: left;
+        }
+
+
+        /* 切换图片按钮的样式 */
+        #img_a {
+            position: absolute;
+            bottom: 30px;
+            left: 40px;
+            z-index: 9999;
+        }
+
+        #img_a a {
+            /* 设置浮动将a变为块元素 可设置其宽高 */
+            float: left;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            background-color: rgb(255, 255, 255, 0.4);
+        }
+
+        #img_a a:hover {
+            background-color: red;
+        }
+
+        #imgList a:nth-child(2) {
+            z-index: 99;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="all">
+        <ul id="imgList">
+            <li><a href="#"><img src="./imgs/img1.jpg"></a></li>
+            <li><a href="#"><img src="./imgs/img2.jpg"></a></li>
+            <li><a href="#"><img src="./imgs/img3.jpg"></a></li>
+            <li><a href="#"><img src="./imgs/img4.jpg"></a></li>
+            <li><a href="#"><img src="./imgs/img5.jpg"></a></li>
+            <li><a href="#"><img src="./imgs/img6.jpg"></a></li>
+            <li><a href="#"><img src="./imgs/img7.jpg"></a></li>
+            <li><a href="#"><img src="./imgs/img8.jpg"></a></li>
+        </ul>
+
+        <div id="img_a">
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+            <a href="#"></a>
+        </div>
+    </div>
+</body>
+<script src="../javaScript/100-/tools.js"></script>
+<script>
+    window.onload = function () {
+        // 获取轮播图div的id
+        var imglist = document.getElementById("img_list");
+        var imgArr = document.getElementsByTagName("li");
+        imgList.style.width = 590 * imgArr.length + "px";
+
+        var allA = document.getElementById("img_a").getElementsByTagName("a");
+        var index = 0;
+        allA[index].style.backgroundColor = "red";
+        // 方法一： es6-let
+        // 方法二：var + 自定义属性
+        for (var i = 0; i < allA.length; i++) {
+            allA[i].num = i;
+            allA[i].onclick = function () {
+                // index= i; //es6-let
+                index = this.num;
+                console.log(index);
+                for (let i = 0; i < allA.length; i++) {
+                    allA[i].style.backgroundColor = "";
+
+                };
+                this.style.backgroundColor = "red";
+            };
+        };
+
+        // for(let i = 0; i<allA.length;i++ ){
+        //     this.style.backgroundColor = "";
+
+
+        // };
+
+
+    };
+</script>
+
+</html>

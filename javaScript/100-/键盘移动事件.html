@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>键盘移动事件</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box"></div>
+    <!-- <input type="text"> -->
+    <!-- 
+        方向键 Unicode 编码
+        上  38
+        下  40 
+        左  37
+        右  39
+     -->
+</body>
+<script>
+    window.onload = function () {
+
+        document.onkeydown = function mFun(event) {
+            // 给块提速
+            var speed = 10;
+            if (event.ctrlKey) {
+                speed += 50;
+            }
+
+            switch (event.keyCode) {
+                // 左
+                case 37:
+                    box.style.left = box.offsetLeft - speed + "px";
+                    break;
+                // 上 
+                case 38:
+                    box.style.top = box.offsetTop - speed + "px";
+                    break;
+                // 右
+                case 39:
+                    box.style.left = box.offsetLeft + speed + "px";
+                    break;
+                // 下
+                case 40:
+                    box.style.top = box.offsetTop + speed + "px";
+                    break;
+
+            };
+
+        };
+    };
+</script>
+
+</html>

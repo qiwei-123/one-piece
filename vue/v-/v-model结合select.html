@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model结合select</title>
+</head>
+
+<body>
+  <!-- 单选 -->
+  <div id="only">
+    <select name="test" id="fruit" v-model="fruits" multiple>
+      <option value="苹果" >苹果</option>
+      <option value="香蕉">香蕉</option>
+      <option value="梨">梨</option>
+      <option value="榴莲">榴莲</option>
+      <option value="西瓜">西瓜</option>
+    </select>
+    <h4 style="color: red;">注 : 按住Ctrl可多选水果</h4>
+    <h2>服务器获取到的水果 : {{fruits}}</h2>
+  </div>
+  <!-- 多选 -->
+  <div id="demo">
+    <select name="123" id="province" v-model="province">
+      <option value="黑龙江省">黑龙江省</option>
+      <option value="河南省">河南省</option>
+      <option value="湖北省">湖北省</option>
+      <option value="甘肃省">甘肃省</option>
+      <option value="湖南省">湖南省</option>
+    </select>
+    <select name="234" id="shi" v-model="shi">
+      <option value="哈尔滨市">哈尔滨市</option>
+      <option value="辽宁市">辽宁市</option>
+      <option value="吉林市">吉林市</option>
+      <option value="鸡西市">鸡西市</option>
+      <option value="密山市">密山市</option>
+    </select>
+    <select name="345" id="tun" v-model="tun">
+      <option value="甲屯">甲屯</option>
+      <option value="乙村">乙村</option>
+      <option value="丙镇">丙镇</option>
+      <option value="丁丁屯">丁丁屯</option>
+      <option value="戊戌寸">戊戌寸</option>
+    </select>
+    <h2>后台获取到的信息 : {{ province + ' ' + shi + ' ' + tun }}</h2>
+  </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+  // 单选 
+  const onlyV = new Vue({
+    el: '#only',
+    data: {
+      fruits: []
+    }
+
+  })
+  // 多选
+  const model = new Vue({
+    el: '#demo',
+    data: {
+      message: '',
+      province: [],
+      shi: [],
+      tun: []
+    },
+  })
+
+
+</script>
+
+</html>

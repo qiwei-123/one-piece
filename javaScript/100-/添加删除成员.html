@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>添加删除成员</title>
+    <style>
+        #f-table table {
+            border: 1px solid black;
+        }
+
+        #f-table th {
+            border: 1px solid black;
+        }
+
+        #f-table td {
+            border: 1px solid black;
+        }
+
+        #f-table a {
+            text-decoration: none;
+        }
+
+        #f-table a:hover {
+            color: red;
+        }
+
+        #s-Div table {
+            border: 1px solid black;
+        }
+
+        #s-table h4 {
+            /* max-width: 0px auto; */
+            text-align: center;
+            /* display: flex; */
+        }
+
+        #s-table {
+            margin-top: 30px;
+            background-color: pink;
+            width: 366px;
+            border: 1px solid black;
+            /* 有待考究的问题*/
+            /* display: flex;
+            justify-content: center; */
+        }
+
+        #th-div {
+            text-align: center;
+            /* margin: 0px auto; */
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="f-table">
+        <table id="employeeTable">
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Gender</th>
+                <th>Salary</th>
+                <th>&nbsp;</th>
+            </tr>
+            <tr>
+                <td>Kobe</td>
+                <td>Kobe@qq.com</td>
+                <td>Male</td>
+                <td>1w</td>
+                <td><a href="#">Delete</a></td>
+            </tr>
+            <tr>
+                <td>Jordan</td>
+                <td>Jordan@qq.com</td>
+                <td>Male</td>
+                <td>10w</td>
+                <td><a href="#">Delete</a></td>
+            </tr>
+            <tr>
+                <td>LQW</td>
+                <td>LQW@qq.com</td>
+                <td>Female</td>
+                <td>6</td>
+                <td><a href="#">Delete</a></td>
+            </tr>
+        </table>
+
+    </div>
+    <div id="s-table">
+        <h4>添加新员工</h4>
+        <div id="th-div">
+            <table>
+                <tr>
+                    <td class="word">name : </td>
+                    <td class="inp">
+                        <input type="text" name="empName" id="empName">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="word">email : </td>
+                    <td class="inp">
+                        <input type="text" name="email" id="email">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="word">gender : </td>
+                    <td class="inp">
+                        <input type="text" name="gender" id="gender">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="word">salary : </td>
+                    <td class="inp">
+                        <input type="text" name="salary" id="salary">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button type="submit" id="addEmpButton">
+                            你看我像提交键不
+                        </button>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+    </div>
+    
+</body>
+<script>
+    window.onload = function () {
+        // 为Delete创建单击响应函数 : 获取超链接
+        var allA = document.getElementsByTagName("a");
+        // 遍历所有超链接
+        for (var i = 0; i < allA.length; i++) {
+            allA[i].onclick = function () {
+                // 使用this 点哪个a删除哪个a所在那行
+                // 获取当前tr
+                var tr = this.parentNode.parentNode;
+                // 获取每个tr中第一个td  为了提示框中 显示删除的成员名 如下两种方法都可
+                // var delName = tr.getElementsByTagName("td")[0].innerHTML;
+                var delName = tr.children[0].innerHTML;
+                // 创建一个判断语句 当弹出提示框 波尔值为true 则删除
+                var deltr = confirm("您确定要删除" + delName + "此成员么?");
+                if (deltr) {
+                    // 删除tr
+                    tr.parentNode.removeChild(tr);
+                }
+                // 取消超链接默认跳转行为 return false;
+
+                return false;
+            };
+
+        }
+        // 为提交按钮创建一个单击响应函数
+        var subbtn = document.querySelector("#addEmpButton");
+        subbtn.onclick = function () {
+            // 获取输入框内容
+            var name = document.getElementById("empName").value;
+            var email = document.getElementById("email").value;
+            var gender = document.getElementById("gender").value;
+            var salary = document.getElementById("salary").value;
+
+            /*
+            <tr>
+                <td>Kobe</td>
+                <td>Kobe@qq.com</td>
+                <td>Male</td>
+                <td>1w</td>
+                <td><a href="#">Delete</a></td>
+            </tr>   
+            */
+            /* 创建新的 tr td  元素节点
+                1.创建一个新的tr
+                2.创建五个新的td
+                3.创建一个超链接
+            */
+            var newTr = document.createElement("tr");
+            
+            newTr.innerHTML = "<td>"+name+"</td>"+
+                            "<td>"+email+"</td>"+
+                            "<td>"+gender+"</td>"+
+                            "<td>"+salary+"</td>"+
+                            "<td><a href='javascript:;'>Delete</a></td>";
+            
+
+            // var nameTd = document.createElement("td");
+            // var emailTd = document.createElement("td");
+            // var genderTd = document.createElement("td");
+            // var salaryTd = document.createElement("td");
+            // var aTd = document.createElement("td");
+
+            var a = document.createElement("a");
+
+            // /* 创建新的 td  的文本节点 
+            //     文本节点内容需获取输入框内容 上面创建了
+            //     1.创建一个新的tr文本节点
+            //     2.创建五个新的td文本节点
+            //     3.创建一个超链接
+            // */
+            // var nameTxt = document.createTextNode(name);
+            // var emailTxt = document.createTextNode(email);
+            // var genderTxt = document.createTextNode(gender);
+            // var salaryTxt = document.createTextNode(salary);
+            // var delTxt = document.createTextNode("Delete");
+            // // 将文本添加到td中
+            // nameTd.appendChild(nameTxt);
+            // emailTd.appendChild(emailTxt);
+            // genderTd.appendChild(genderTxt);
+            // salaryTd.appendChild(salaryTxt);
+            // // 向a中添加文本
+            // a.appendChild(delTxt);
+            // // 将a添加到td中
+            // aTd.appendChild(a);
+            // // 将td添加到tr中
+            // newTr.appendChild(nameTd);
+            // newTr.appendChild(emailTd);
+            // newTr.appendChild(genderTd);
+            // newTr.appendChild(salaryTd);
+            // newTr.appendChild(aTd);
+
+
+            // 向a中添加href
+            // a.href = "javascript:;";
+            // 获取table
+            var employeeTable = document.getElementById("employeeTable");
+            // 将tr添加到table中
+            employeeTable.appendChild(newTr);
+
+            // var tbody = document.getElementsByTagName("tbody");
+            // tbody.appendChild(body);
+            
+        };
+
+
+
+    };
+</script>
+
+</html>

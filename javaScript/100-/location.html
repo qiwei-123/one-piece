@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>location</title>
+</head>
+
+<body>
+    <button id="btn">获取Location</button>
+</body>
+<script>
+    window.onload = function (params) {
+        /*
+            location
+            -封装浏览器地址栏的信息
+        */
+        // 获取按钮对象
+        var btn = document.getElementById("btn");
+        // 若直接打印location 则可以获取到地址栏的信息(当前页面的完整路径)
+        btn.onclick = function (params) {
+            // alert(location);
+
+            // 若直接将location属性改为一个完整的路径或相对路径
+            // 则页面会自动跳转到该路径 实现与超链接相似的功能 并会生成相应的历史记录
+            // location = "http://www.baidu.com";
+            // location = "history.html";
+
+            /*
+                assign()
+                - 用来跳转到其他的页面 作用和直接修改location一样 也会生成历史纪录
+                location.assign("http://www.baidu.com");
+            */
+           /*
+                reload
+                - 用于重新加载当前页面 作用和刷新按钮一样
+                - 如果在方法中传递一个true 作为参数 则会强制清空缓存刷新页面
+                location.reload(true);
+           */
+          /*
+                replace()
+                - 可以使用一个新的页面替换当前页面 调用完毕也会跳转页面 
+                - 无法使用回退按钮 不会生成历史记录
+                location.replace("history.html");
+          */
+         
+        };
+    };
+</script>
+
+</html>

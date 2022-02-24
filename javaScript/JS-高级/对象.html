@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        JS高级-笔记-对象
+    </title>
+</head>
+<body>
+    <!-- 
+        1.什么是对象？
+            多个数据的封装体
+            用来保存多个数据的容器
+            一个对象代表显示中的一个事物
+        2.为什么要用对象？
+            统一管理多个数据
+        3.对象的组成
+            属性 ： 属性名(可以用字符串但可不用)和属性值(任意)
+            方法 ： 一种特别的属性(属性值是函数)
+        4.如何访问对象内部的数据？
+            .属性名  编码简单 有时不可用
+            ['属性名']   编码复杂 通用
+        5.何时必须使用['属性名']的方式
+            5.1 属性名包含特殊字符 比如：空格 / 
+            5.2 变量名(属性名)不确定
+
+
+     -->
+</body>
+<script>    
+    // 5.1
+    var o = {};
+    var age;
+    // 上方声明 age 变量 所以未加 '' 可以
+    o[age] = '456';
+    o['content'] = '123';
+    console.log(o);
+    console.log(o.content);
+    // 5.2
+    var propName = 'test';
+    var value = 18;
+    var p = {};
+    // p.propName = value;  不可用
+    p['propName'] = value;
+    console.log(p);
+</script>
+</html>

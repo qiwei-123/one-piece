@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>slot插槽</title>
+  <style>
+    #demo .c2 span {
+      color: red;
+    }
+    #demo .c3 p {
+      color: blue;
+    }
+    #demo .c4 div {
+      width: 100px;
+      height: 100px;
+      background-color: saddlebrown;
+    }
+    #demo .c4 p {
+      background-color: royalblue;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 
+      组件的插槽是为了封装的组件更具扩展性
+      让使用者决定组件内部的一些内容到底展示什么
+      当插槽具有name属性 则<cpn></cpn>中改变的只有无name属性的插槽
+      想改变任意一个时 需带上其name=""
+     -->
+  <div id="demo">
+    <cpn></cpn>
+    <cpn class="c2"><span>被替换的内容</span></cpn>
+    <cpn class="c3">
+      <p>hah</p>
+    </cpn>
+    <cpn class="c4"><p>🤭</p></cpn>
+    <cpn class="c5"></cpn>
+  </div>
+
+</body>
+
+<template id="tem">
+  <div>
+    <h2>标题</h2>
+    <div>div元素</div>
+    <slot>
+      <p>默认的插槽内容</p>
+    </slot>
+
+  </div>
+</template>
+
+<script src="../vue/vue.js"></script>
+<script>
+  const demo = new Vue({
+    el: '#demo',
+    data: {
+
+    },
+    components: {
+      cpn: {
+        template: '#tem',
+      }
+    }
+  })
+</script>
+
+</html>

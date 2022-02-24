@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>事件的委派</title>
+    <style>
+        a {
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: red;
+        }
+
+        ul {
+            list-style: none;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">Click</button>
+    <ul id="ul">
+        <li><a href="javascript:;" class="link">超链接1</a></li>
+        <li><a href="javascript:;" class="link">超链接2</a></li>
+        <li><a href="javascript:;" class="link">超链接3</a></li>
+    </ul>
+</body>
+<script>
+    window.onload = function () {
+        var btn = document.getElementById("btn");
+        var ul = document.getElementById("ul");
+        btn.onclick = function () {
+            var newli = document.createElement("li");
+            newli.innerHTML = '<a href="javascript:;" class="link">新建的超链接</a>';
+            ul.appendChild(newli);
+
+        };
+        // 此时所有超链接都会弹出对话框  通过冒泡事件达成
+        /*
+            事件的委派
+        - 指将事件统一绑定给元素的共同元素的祖先元素
+        这样当后代元素上的事件触发时 会一直冒泡到祖先元素
+        从而通过祖先元素的响应函数来处理事件
+        - 事件委派是利用了冒泡 通过委派可以减少事件绑定的次数 提高程序的性能
+            target
+        - event中的target表示的是触发事件的对象
+        */
+        
+        ul.onclick = function(){
+            var event = event || window.event;
+            // 如果触发事件的对象是我们期望的元素 则执行 否则不执行
+            // 不做此判断则 点击ul所在区域都会触发事件 利用className判断
+            if (event.target.className == "link") {
+                
+                alert("我是a的单击响应函数");
+            }
+        };
+    };
+
+</script>
+
+</html>

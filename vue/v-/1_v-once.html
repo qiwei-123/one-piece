@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    
+    <!-- v-once -->
+    <div id="once">
+        <h3>{{test}}</h3>
+        <h3 v-once>{{test}}</h3>
+    </div>
+
+</body>
+<script src=""></script>
+<script>
+
+    // v-once 
+
+    // 该指令后无需跟任何表达式
+    // 该指令表示元素和组件只渲染一次，不随数据的改变而改变
+
+    const vOnce = new Vue({
+        el: '#once',
+        data: {
+            test: '测试 v-once 字符串'
+        }
+    })
+
+</script>
+
+</html>

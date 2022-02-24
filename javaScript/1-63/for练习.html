@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+
+      console.time("test");
+      for(i=1;i<=9;i++){
+        
+        for(j=1;j<=i;j++){
+
+          document.write(j + "*" + i + "=" + i*j + "&nbsp&nbsp&nbsp");
+        }
+          document.write("<br/>");
+
+      }
+      console.timeEnd("test");
+
+      /*
+        continue 可以跳过当此循环，默认只会对最近循环起作用
+        break可以用来退出switch或循环语句，会终止最近的循环语句（label：）
+        不能在if语句中使用break和continue
+
+
+        计时器 
+        console.time("计时器名字")
+        console.timeEnd("计时器名字")
+        Math.sqrt(4)   值为 2   将4开根号
+
+      */
+  </script>
+</body>
+</html>

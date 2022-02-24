@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-for_2</title>
+</head>
+
+<body>
+    <ul class="test">
+        <!-- 在遍历过程中 没有使用索引值(下标值) -->
+        <li v-for="i in movies">{{i}}</li>
+        <br><br>
+        <!-- 在遍历过程中 获取索引值 -->
+        <li v-for="(i, index) in movies">{{index+1}} - {{i}}</li>
+    </ul>
+
+    <ul class="test2">
+        <!-- 格式: (value, key)  -->
+        <li v-for="(value, key) in obj">{{value}} + {{key}}</li>
+        <br><br>
+        <!-- 格式: (value, key, index)  -->
+        <li v-for="(value, key, index) in obj">{{value}} —— {{key}} —— {{index}}</li>
+
+    </ul>
+
+
+    <!-- 
+        v-for 绑定key提高性能 绑定key 不使用index因为添加新元素 index就会变 
+    -->
+    <ul class="test3">
+        <li v-for="item in movies" :key="item">{{item}}</li>
+    </ul>
+</body>
+<script src="../vue/vue.js"></script>
+<script>
+    const arr = new Vue({
+        el: '.test',
+        data: {
+            movies: ['西游记', '红楼梦', '大话西游', '复仇者联盟', '小猪佩奇']
+
+        }
+    })
+
+    const arr2 = new Vue({
+        el: '.test2',
+        data: {
+            obj: {
+                name: 'cat',
+                age: '18',
+                gender: 'man'
+            }
+        }
+    })
+
+    const arr3 = new Vue({
+        el: '.test3',
+        data: {
+            movies: ['西游记', '红楼梦', '大话西游', '复仇者联盟', '小猪佩奇']
+
+        }
+    })
+
+</script>
+
+</html>

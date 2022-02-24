@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>计数器组件封装</title>
+</head>
+
+<body>
+  <div id="demo">
+    <cpn></cpn>
+    <cpn></cpn>
+    <cpn></cpn>
+  </div>
+
+</body>
+
+<template id="constructor">
+  <div>
+    <h2>当前计数 : {{num}}</h2>
+    <button @click="increClick">-</button>
+    <button @click="addClick">+</button>
+  </div>
+</template>
+
+<script src="../vue.js"></script>
+<script>
+  Vue.component('cpn',
+    {
+      template: '#constructor',
+      data() {
+        return {
+          num: 0 
+        } 
+      },
+      methods: {
+        increClick() {
+          this.num--
+        },
+        addClick() {
+          this.num++
+        }
+      },
+    })
+
+  const demo = new Vue({
+    el: '#demo'
+
+  })
+
+</script>
+
+</html>

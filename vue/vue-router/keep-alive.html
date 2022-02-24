@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vue-router-keep-alive</title>
+</head>
+
+<body>
+  <!-- 
+    keep-alive是Vue 一个内置组件 可以使被包含的组件保留状态 或避免重新渲染
+    router-view 也是一个组件 若被直接包在keep-alive里 所有路径匹配到的视图组件都会被缓存
+    <keep-alive>
+      <router-view></router-view>
+    </keep-alive>
+    保证经常用到的组件不会频繁的创建和销毁 提高性能
+    
+
+     目前设计浏览器为 默认/home/news
+  ****此时实现一个功能 当点击其他选项前时 
+  ****如果点击的为'实时消息' 选项 当返回时依旧是信息
+      浏览器活跃时 执行的函数以及 在离开当前选项时 保留此次 $route
+      actived(){
+        当活跃时(即点击状态时) 将当前页面url 路径变为最近一次点击的路径
+        然后在离开次选项前将此次最后点击显示的url 保存 显示在下次点击中
+        即实现此开发功能 
+        this.$router.push(this.path)
+      },
+      beforeRouteLeave(){
+        this.path = this.$route.path
+      }
+    include 字符串或正则表达 只有匹配的组件会被缓存
+    exclude 字符串或正则表达式 任何匹配的组件都不会被缓存
+    
+  -->
+</body>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promise-三种状态, 链式调用</title>
+</head>
+
+<body>
+  <!-- 
+    pending 等待 正在进行网络请求或定时器未到时间
+    fulfill 满足 主动调用resolve 回调 .then()
+    reject 拒绝 主动调用reject 回调 .catch()
+   -->
+</body>
+<script>
+  new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('a1');
+    }, 1000)
+  }).then(value => {
+    console.log(value, '第一次网络请求***发送第一组数据');
+
+    return Promise.resolve(value + 'b2');
+  }).then(value => {
+    console.log(value, '第二次网络请求***发送第二组数据');
+
+    return value + 'c3';
+  }).then(value => {
+    console.log(value, '第3次网络请求***发送第3组数据');
+  })
+
+
+</script>
+
+</html>

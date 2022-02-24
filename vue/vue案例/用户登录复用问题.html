@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>用户登录复用问题</title>
+</head>
+
+<body>
+    <div id="div">
+        <span v-if="judge">
+            <label for="user">用户账号:</label>
+            <input placeholder="请输入您的账号" id="user" key="123">
+        </span>
+        <span v-else>
+            <label for="email">邮箱账号:</label>
+            <input placeholder="请输入您的邮箱" id="email" key="124">
+        </span>
+        <button @click="changeType">切换登录类型</button>
+    </div>
+    <!-- 
+            Question :
+        当在有输入内容时 切换类型 会发现依然显示之前的输入内容 
+        此时应切换到另外一个input元素中了 而另一个元素中没有内容
+        出现的此情况原因？
+            Answer :
+        因为Vue在进行DOM渲染时 处于性能考虑 会尽可能的复用已经存在的元素 而不是重新创建新的元素
+        在此案例中 Vue内部会发现原来的input元素不再使用 直接作为else中的input来使用
+            Solution :
+        若不希望Vue出现类似重复利用的问题 可以给对应的input元素添加key
+        同时key保持不相同
+     -->
+</body>
+<script src="../vue/vue.js"></script>
+<script>
+    const admin = new Vue({
+        el: '#div',
+        data: {
+            judge: true
+        },
+        methods: {
+            changeType() {
+                this.judge = !this.judge
+            }
+        }
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    /*
+        ES6 允许使用箭头函数  () => {}  定义函数
+        作用相同两种创建方式
+        let fun = function () {
+            
+        }
+        let fun = () => {
+    
+        }
+        计算
+        let tst = (a,b) => {
+            return a+b;
+        }
+        let result = tst(200,100);
+        console.log(result);
+        1.this 是静态的 始终指向函数声明时所在作用域下的this的值
+        2.不能作为实例化对象
+        let Person = (name , age) => {
+            this.name = name,
+            this.age = age
+        }
+        let me = new Person ('curry',18){
+            console.log(me);
+        }
+        3.不能使用arguments
+        let fn = () => {
+            console.log(arguments);
+        }
+        fn(1,2,3);
+        4.箭头函数的简写
+        1)省略小括号 当形参有且只有一个时
+        let fun = n => {
+            return n*n;
+        }
+        console.log(fun(3));
+        2)省略大括号 当代码体只有一条语句时 return 也必须省略
+        let pow = n => n*n;
+        console.log(pow(7));
+
+    */
+    function getName() {
+        console.log(this.name);
+    }
+    let getName2 = () => {
+        console.log(this.name);
+    }
+    window.name = "开飞机的舒克";
+    const rel = {
+        name: '开坦克的贝塔'
+    }
+
+
+    /*
+        getName();
+        getName2();
+        此时调用结果相同    开飞机的舒克
+    */
+    // call方法调用
+    /*
+        此处结果为  开坦克的贝塔以及开飞机的舒克
+        原因 : 当let声明时是在全局作用域声明 this为静态 所以始终调用window.name的值
+        getName.call(rel);
+        getName2.call(rel);
+    
+    */
+
+</script>
+
+</html>

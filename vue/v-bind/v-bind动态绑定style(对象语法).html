@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-bind动态绑定style(对象语法)</title>
+
+</head>
+
+<body>
+
+    <!-- 
+        '50px'必须加单引号 否则是当做一个变量去解析 
+        
+        格式:
+        <h2 :style="{ key(属性名) : value(属性值) }">{{text}}</h2>
+
+        <h2 :style="{fontSize:'50px'}">{{text}}</h2>
+    
+    -->
+    <div id="sty">
+        <p :style="{fontSize:textSize + 'px', backgroundColor: bgColor }">{{text}}</p>
+        <h2 :style="getStyle()">{{text}}</h2>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    const styl = new Vue({
+        el: '#sty',
+        data: {
+            text: '测试',
+            textSize: 50,
+            testColor: 'red',
+            bgColor: 'red',
+        },
+        methods: {
+            getStyle: function () {
+                return { fontSize: this.textSize + 'px', backgroundColor: this.bgColor }
+            }
+        }
+    })
+</script>
+
+</html>

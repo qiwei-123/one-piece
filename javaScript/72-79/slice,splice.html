@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>slice,splice</title>
+</head>
+
+<body>
+    <!-- 
+    slice()
+    - 可以用来从数组提取指定元素
+    - 该方法不会改变元素数组,而是将截取到的元素封装到一个新数组中返回
+    - 参数
+        1.第一个,截取开始的位置的索引,包含开始索引
+        2.第二个,截取结束的位置的索引,不包含结束索引
+            - 当第二个参数省略不写时,往后所有索引都会打印出
+            arr.slice(0,2); 
+            - 索引可以传递负值,此时,从后往前计算
+    splice()
+        - 可以用于删除数组中的指定元素
+        - 使用splice会影响原数组,会将指定元素从原数组中删除
+          并将被删除的元素作为返回值返回
+        - 参数
+            1.第一个,开始位置的索引
+            2.第二个,表示删除的数量
+            arr.splice(1,2);
+            arr.splice(1,2,"我是新的元素");
+            3.第三个及以后,
+                可以传递一些新的元素,这些元素将会自动插入到开始位置索引前边
+            eg :    var arr = ["test_01","test_02","test_03","test_04"];
+                    arr.splice(1,0,"我是新添加的第1个元素","我是新添加的第2个元素","我是新添加的第3个元素");
+                    console.log(arr);
+                    console.log("数组长度 = "+arr.length);
+
+
+        -->
+</body>
+<script>
+    // var arr = ["科比","库里","詹姆斯","乔丹","拉塞尔","罗斯","卡特","麦迪","普尔"]
+    // for (var i = 0; i < arr.length; i++) {
+    //     // var he = arr;
+    //     // console.log(he);
+    // }
+    // console.log(arr);
+    // console.log("数组长度 : "+arr.length);
+
+    // 创建一个Person对象 
+    // function Person(name, age) {
+    //     this.name = name;
+    //     this.age = age;
+    //     // "我是构造函数Person中的function"
+    // }
+    // var per = new Person("猪八戒", "18");
+    // var per2 = new Person("孙悟空", "12");
+    // var per3 = new Person("唐僧", "183");
+    // var per4 = new Person("沙和尚", "14");
+    // // 将这些Person对象放入数组中
+    // var perArr = [per, per2, per3, per4];
+    // // console.log(perArr);
+    // // 创建一个函数,可以将函数中满18岁的person提取出来,封装到一个新数组中返回
+    // function getAdult(arr) {
+    //     // 创建一个新数组
+    //     var newArr = [];
+    //     // 遍历arr,获取arr中的Person对象
+
+    //     // 判断Person对象的age是否大于等于18
+
+    //     // 如果大于等于18,则将这个对象添加到newArr中
+
+    //     // 将新数组返回
+    //     return newArr();
+    // }
+    // console.log(newArr);
+    
+</script>
+
+</html>

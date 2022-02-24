@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>对象添加symbol类型的属性</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let game = {};
+    let methods = {
+        name: '坦克大战',
+        up: Symbol(),
+        down: Symbol(),
+        left: Symbol(),
+        right: Symbol(),
+        shoot: Symbol()
+    }
+    game[methods.up] = function () {
+        console.log('向上移动');
+    }
+    game[methods.down] = function () {
+        console.log('向下移动');
+    }
+    game[methods.left] = function () {
+        console.log('向左移动');
+    }
+    game[methods.right] = function () {
+        console.log('向右移动');
+    }
+    game[methods.shoot] = () => {
+        console.log('射击');
+    }
+    console.log(game);
+
+    let lol = {
+        name: '英雄联盟',
+        [Symbol('move')]: () => {
+            console.log('移动')
+        },
+        [Symbol('A')]: () => {
+            console.log('攻击');
+        }
+    };
+    console.log(lol);
+</script>
+
+</html

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图片切换练习</title>
+    <style>
+        .box {
+            width: 500px;
+            height: 500px;
+            background-color: greenyellow;
+            text-align: center;
+        }
+
+        .imgphoto {
+            /* text-align: center; */
+            /* width: 420px; */
+            width: 100%;
+            height: 400px;
+            margin: 0px auto;
+        }
+
+        .btn1 {
+            margin: 20px;
+            cursor: pointer;
+        }
+
+        .btn2 {
+            margin: 20px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p id="inform"></p>
+        <img class="imgphoto" src="../JS御用图片库/logo2.webp" alt="">
+        <button id="btn1">上一张</button>
+        <button id="btn2">下一张</button>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+
+        var img = document.getElementsByClassName("imgphoto")[0];
+        // 创建一个储存图片的数组
+        var imgArr = ["../JS御用图片库/logo2.webp",
+                "../JS御用图片库/小埋2.jpg",
+                "../JS御用图片库/logo.jpg",
+                "../JS御用图片库/小埋3.jpg",];
+
+        var prev = document.getElementById("btn1");
+        var next = document.getElementById("btn2");
+        // 创建一个变量,来保存当前正在显示的图片的索引
+        var index = 0;
+        // 获取id为inform的p元素
+        var inform = document.getElementById("inform");
+        inform.innerHTML = "共" + imgArr.length + "张图片," + "此图为第" + (index + 1) + "张";
+
+        // 为btn1按钮绑定单击响应函数
+        prev.onclick = function () {
+            // 切换到上一张 图片索引自减
+            index--;
+            // 点击按钮改变图片 就是改变img的src属性
+            img.src = imgArr[index];
+            // console.log(img);
+            // 判断index是否小于0 上下两个判断条件互换则无限继续换图
+            if (index < 0) {
+                index = 0;
+            }
+        }
+
+        // 为btn2按钮绑定单击响应函数
+        next.onclick = function () {
+            // 索引自加
+            index++;
+            img.src = imgArr[index];
+            if (index > imgArr.length - 1) {
+                index = imgArr.length - 1;
+            }
+
+        }
+    }
+
+
+</script>
+
+</html>

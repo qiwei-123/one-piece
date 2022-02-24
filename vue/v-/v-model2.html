@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model</title>
+</head>
+
+<body>
+  <!-- v-model表单绑定 -->
+
+
+
+  <!-- v-model双向绑定 -->
+  <div id="demo1">
+    <input type="text" v-model="message1">{{message1}}
+  </div>
+
+  <br><br><br><br>
+
+  <div id="demo">
+    <!-- 
+      input 有一个内部事件 监听输入调用相应的函数 
+      此方法可做到与v-model 一样效果的双向绑定
+    -->
+    <input type="text" :value="message" @:input="testFun">{{message}}
+  </div>
+
+
+</body>
+<script src="../vue.js"></script>
+<script>
+  const model1 = new Vue({
+    el: '#demo1',
+    data: {
+      message1: '双向绑定'
+    },
+  })
+
+
+
+  const model = new Vue({
+    el: '#demo',
+    data: {
+      message: '双向绑定'
+    },
+    methods: {
+      testFun(event) {
+        this.message = event.target.value;
+      }
+    }
+  })
+
+</script>
+
+</html>

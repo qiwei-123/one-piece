@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-if, v-else-if, v-else</title>
+</head>
+
+<body>
+    <!-- 
+        这三个指令与JavaScript的条件语句if, else, else if 类似 
+        Vue的条件指令可以根据表达式的值在DOM中渲染或销毁元素或组件
+
+        v-if原理
+        v-if后面的条件为false时 对应的元素以及子元素不会渲染
+        也就是不会有对应的标签出现在DOM中
+    -->
+    <div id="demo">
+        <div v-if="judge">
+            <h2>Hello World</h2>
+            <h2>Hello World</h2>
+            <h2>Hello World</h2>
+            <h2>Hello World</h2>
+            <h2>Hello World</h2>
+            <h2>Hello World</h2>
+        </div>
+    </div>
+    <br>
+    <div id="demo2">
+
+        <ul v-if="judge">
+            <li>七零八碎的选项1</li>
+            <li>七零八碎的选项2</li>
+            <li>七零八碎的选项3</li>
+            <li>七零八碎的选项4</li>
+            <li>七零八碎的选项5</li>
+            <li>七零八碎的选项6</li>
+        </ul>
+        <h2 v-else>judge为false时，我就出来啦!</h2>
+
+    </div>
+    <br>
+    <div id="demo3">
+        <p v-if="score>=90">优秀</p>
+        <p v-else-if="score>=80">良好</p>
+        <p v-else-if="score>=70">中等</p>
+        <p v-else-if="score>=60">及格</p>
+        <p v-else>回炉重造</p>
+
+        <h1>{{result}}</h1>
+    </div>
+</body>
+<script src="../vue/vue.js"></script>
+<script>
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            judge: false,
+        }
+    })
+    const demo2 = new Vue({
+        el: '#demo2',
+        data: {
+            judge: false,
+        }
+    })
+    const demo3 = new Vue({
+        el: '#demo3',
+        data: {
+            judge: false,
+            score: '2'
+        },
+        computed: {
+            result() {
+                let documentScore = '';
+                if (this.score >= 90) {
+                    documentScore = '优秀'
+                } else if (this.score >= 80) {
+                    documentScore = '良好'
+                } else if (this.score >= 70) {
+                    documentScore = '中等'
+                } else if (this.score >= 60) {
+                    documentScore = '及格'
+                } else {
+                    documentScore = '回炉重造'
+                }
+
+                return documentScore
+            }
+        }
+    })
+
+</script>
+
+</html>

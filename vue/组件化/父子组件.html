@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父子组件</title>
+</head>
+
+<body>
+  <div id="cc">
+    <cpn2></cpn2>
+    <cpn1></cpn1>
+  </div>
+
+</body>
+<script src="../vue.js"></script>
+<script>
+  // 子组件
+  const cpnC1 = Vue.extend({
+    template:
+      `
+      <h2>标题1111</h2>
+      <p>内容11111</p>
+    `
+  });
+  // 父组件
+  const cpnC2 = Vue.extend({
+    template:
+      `
+      <h2>标题22222</h2>
+      <p>内容222</p>
+      <cpn1></cpn1>
+    `,
+    components: {
+      cpn1: cpnC1
+    }
+
+  });
+  // root组件
+  const root = new Vue({
+    el: '#cc',
+    components: {
+      cpn2: cpnC2,
+      cpn1: cpnC1
+    }
+  });
+
+</script>
+
+</html>

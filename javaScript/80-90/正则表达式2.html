@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式2</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        split()
+        - 将数组拆分
+    
+    */
+   var str = "1a2b3c4d5e6f7";
+   var result =str.split(/[a-f]/i);
+   console.log("原字符串为 : "+str+" "+" "+"拆分后字符串 : "+result);
+   /*
+        search()
+        - 可以搜索字符串中是否有指定内容
+        - 若搜索到 则返回 "第一次" 出现的索引 
+        - 若未搜索到 则返回 -1
+        - 它可接受一个正则表达式作为参数,然后会根据正则表达式去检索字符串
+   */
+    var str02 ="abc aec atc adc afc";
+    var resulten = str02.search(/a[et]c/i);
+    console.log(resulten);
+    /*
+        match()
+        - 可以根据正则表达式从一个字符串中将符合条件的内容提取出来
+        - 默认情况下 match只会找第一个符合要求的内容 找到后就停止检索
+        - 可以设置正则表达式为全局匹配模式
+        - 可以为一个正则表达式设置多个匹配模式 顺序无所谓
+        - 会将匹配的内容封装到一个数组中返回
+    */
+    var str03 ="abc aec atc aDc afc";
+    var resulten = str03.match(/a[dtf]c/ig);
+    console.log(resulten);
+    console.log(resulten[2]);
+    /*
+        replace()
+        - 可以将字符串中指定内容替换为新的内容
+        - 参数
+            1.被替换的内容
+            2.新的内容
+
+    */
+    var str04 ="abc aec atc aDc afc";
+    var resulten = str04.replace(/c/ig," ");
+    console.log(resulten);
+
+</script>
+</html>

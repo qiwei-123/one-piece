@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-pre</title>
+</head>
+
+<body>
+    <!-- v-pre 当想要输入的内容原封不动不被解析 则使用v-pre-->
+
+    <div id="pre">
+        <h3>{{message}}</h3>
+        <h3 v-pre>{{message}}</h3>
+    </div>
+
+</body>
+<script src="../vue.js"></script>
+<script>
+    // v-pre
+    const vPre = new Vue({
+        el: '#pre',
+        data: {
+            message: '测试是否被解析的文本'
+        }
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS高阶函数的使用</title>
+</head>
+
+<body>
+
+</body>
+<script src="../vue/vue.js"></script>
+<script>
+  const arr = [10, 20, 30, 40, 81, 451];
+  // 相当于一个for循环遍历数组后进行判断将符合条件的数放入一个新的数组然后打印出来
+  // 高阶函数 这种方法实现更简便一些 
+  let newArr = arr.filter(function (n) {
+    return n < 50;
+  })
+  console.log(newArr);
+
+  let newArr2 = newArr.map(function (n) {
+    return n * 2
+  })
+
+  let newArr3 = newArr2.reduce(function (preValue, n) {
+    return preValue + n
+  })
+  console.log(newArr3);
+
+
+  // ！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+  // 习惯使用高阶函数 更快更简便
+  let newSum = arr.filter(function (n) {
+    return n < 50
+  }).map(function (n) {
+    return n * 2
+  }).reduce(function (preValue, n) {
+    return preValue + n
+  })
+
+  // 箭头函数写法  
+  let total = arr.filter((n) => n < 50).map((n) => n * 2).reduce((pre, n) => pre + n);
+  let total2 = arr.filter(n => n < 50).map(n => n * 2).reduce((pre, n) => pre + n);
+  console.log('箭头函数计算结果 : ' + total);
+  console.log('箭头函数计算结果2 : ' + total2);
+</script>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>切换图片练习</title>
+    <style>
+    </style>
+</head>
+
+<body>
+    <img src="../imgs/1.jpg" alt="" id="img1">
+    <br>
+    <button id="btn1">Start</button>
+    <button id="btn2">Stop</button>
+</body>
+<script>
+    window.onload = function (params) {
+        // 获取img1
+        var img1 = document.getElementById("img1");
+        // 创建一个数组保存图片
+        var imgArr = ["../imgs/1.jpg", "../imgs/2.jpg", "../imgs/3.jpg", "../imgs/5.jpg"];
+        // 创建一个图片的索引
+        var index = 0;
+        var timer;
+        // 为btn1创建一个单击响应函数
+        btn1.onclick = function () {
+
+            // 当多次点击START会开启多个计时器 但STOP只能停止最后一个计时器
+            // 所以需在每次计时器开始时 将计时器停止
+            clearInterval(timer);
+            timer = setInterval(function () {
+
+                index++;
+                // 设置一个判断 当图片加载到最后一张时 将图片重新循环(index == 0)
+                // index %= imgArr.length 与if判断效果相同
+                if (index >= imgArr.length) {
+                    index = 0;
+                }
+                img1.src = imgArr[index];
+
+            }, 1000);
+
+        };
+        var btn2 = document.getElementById("btn2");
+        btn2.onclick = function () {
+
+            // 停止计时器
+            clearInterval(timer);
+        };
+
+    };
+</script>
+
+</html>

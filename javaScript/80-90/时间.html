@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>time</title>
+</head>
+<body>
+    
+</body>
+<script>
+    var d = new Date();
+    console.log(d);
+    // 年
+    var d_year = d.getFullYear();
+    console.log(d_year+"年");
+    // 月
+    var d_month = d.getMonth();
+    console.log(d_month+1+"月");
+    // 日
+    var d_date = d.getDate();
+    console.log(d_date+"日");
+    // 星期
+    var d_day = d.getDay();
+    console.log("星期"+d_day);
+    // 时
+    var d_hours = d.getHours();
+    console.log(d_hours+"时");
+    // 分
+    var d_minute = d.getMinutes();
+    console.log(d_minute+"分");
+    // getTime()
+    // - 获取当前日期对象的时间戳
+    // - 时间戳,指的是从格林威治标准时间1970年1月1日 00:00
+    // - 到当前日期所花费的毫秒  1s = 1000ms
+    var d_time = d.getTime();
+    console.log("时间戳 : "+d_minute);
+
+</script>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <ul>
+
+            <li v-for="item in movies">{{item}}</li>
+            <br>
+            <li v-for="item in movies">{{item[0]}}</li>
+            <br>
+            <li v-for>{{movies[1]}}</li>
+            <li v-for>{{movies[2]}}</li>
+            <li v-for>{{movies[3]}}</li>
+            <li v-for>{{movies[4]}}</li>
+        </ul>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    const app = new Vue({
+        el: '#app', // 用于挂载要管理的元素 
+        data: {    // 定义数据
+            movies: ['西游记', '红楼梦', '大话西游', '复仇者联盟', '小猪佩奇']
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>组件化</title>
+</head>
+
+<body>
+  <!-- 
+    1.调用Vue.extend()方法
+    创建组件构造器  
+    2.调用Vue.component方法
+    注册组件
+    3.在Vue实例的作用范围内使用组件
+
+   -->
+
+   <!-- 3.在Vue实例的作用范围内使用组件 -->
+   <div id="cc">
+    <cpn></cpn>
+    <cpn></cpn>
+   </div>
+   <!-- 此处cpn未挂载到Vue实例下 不生效 -->
+   <cpn></cpn>
+
+   <div id="dd">
+     <cpn></cpn>
+   </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+  // 1.创建组件构造器对象  
+  const cpnC = Vue.extend({
+    template:
+      `
+      <div>
+        <h2>标题</h2>
+        <p>内容1</p>
+        <p>内容2</p>
+      </div>
+      `
+  })
+  // 2.注册组件 (全局组件)
+  // (标签名, 构造器)
+  Vue.component('cpn',cpnC);
+
+  let cc = new Vue({
+    el: '#cc',
+    // components: {
+    //   cpn: cpnC
+
+    // }
+  })
+  let dd = new Vue({
+    el: '#dd',
+    // components: {
+    //   // cpn: cpnC
+
+    // }
+  })
+
+</script>
+
+</html>

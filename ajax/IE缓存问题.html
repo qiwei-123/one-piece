@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IE缓存问题</title>
+    <style>
+        #result {
+            width: 200px;
+            height: 100px;
+            border: 1px #258 solid;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+            IE缓存问题 :
+        IE浏览器会对ajax的请求结果有一个缓存(将结果缓存起来)
+        导致 下一次再发送请求,走的是本地的缓存并非服务器返回的
+        最新数据，对于一些时效性很强的场景,会影响ajax的结果
+
+
+     -->
+    <button>点击发送请求</button>
+    <div id="result"></div>
+</body>
+<script>
+    const btn = document.getElementsByTagName('button')[0];
+    const result = document.getElementById('result');
+    btn.addEventListener('click', function () {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', 'http://127.0.0.1:8000/ie?t='+Date.now());
+        xhr.send();
+        xhr.onreadystatechange = function () {
+
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    result.innerHTML = xhr.response;
+                }
+            }
+        };
+
+
+
+    });
+
+</script>
+
+</html>

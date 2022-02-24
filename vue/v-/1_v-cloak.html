@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v-cloak</title>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 
+        v-cloak
+        当用户页面出现卡顿现象时 vue代码加载不出来此时用户会看到
+        {{message}} 这种情况对于用户体验不好
+        所以使用v-cloak 将其隐藏起来
+    -->
+    <div id="cloak" v-cloak>
+        {{message}}
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    setTimeout(() => {
+        const cloak = new Vue({
+            el: '#cloak',
+            data: {
+                message:'当vue代码加载完，才会显示的文本'
+            }
+        })
+
+    }, 1000);
+
+</script>
+
+</html>

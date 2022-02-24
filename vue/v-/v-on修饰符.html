@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>修饰符</title>
+</head>
+
+<body>
+    <div id="xs">
+        <!-- 停止冒泡 -->
+        <div id="div" @click="divClick1">
+            <!-- 想阻止冒泡 @click.stop 即可 -->
+            <button @click.stop="btnClick1">按钮1</button>
+            <button @click.prevent="btnClick1">按钮2</button>
+        </div>
+        <br>
+        <!-- 阻止默认行为 无表达式 -->
+        <form action="测试">
+            <input type="submit" value="提交" @click.prevent="submitClick">
+        </form>
+
+        <!-- 监听键盘某个按键 -->
+        <input type="text" @keyup.e="keyUp">
+
+        <!-- 键修饰符 键别名 -->
+        <input @keyup.enter="onEnter">
+        <!-- 键修饰符 键代码 -->
+        <input @keyup.13="onEnter">
+
+        <!-- 阻止默认行为 -->
+        <button @click.prevent="dothis"></button>
+        <!-- 串联修饰符 -->
+        <button @click.stop.prevent="dothis"></button>
+        <!-- 点击回调只会触发一次 -->
+        <button @clikc.once="dothis"></button>
+        <!-- 监听自定义组件时用 @click.native -->
+        <cpn @click.native="cpnClick"> </cpn>
+    </div>
+
+</body>
+<script src="../vue.js"></script>
+<script>
+    // 修饰符
+    const xs = new Vue({
+        el: '#xs',
+        data: {
+            message: 'Hello World',
+
+        },
+        methods: {
+            divClick1() {
+                console.log("divClick");
+            },
+            btnClick1() {
+                console.log("btnClick");
+            },
+            submitClick() {
+                console.log("提交的内容");
+            },
+            keyUp() {
+                console.log('keyUp');
+            }
+        }
+    })
+
+</script>
+
+</html>

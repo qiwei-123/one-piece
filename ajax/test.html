@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #result2 {
+            width: 300px;
+            height: 20px;
+            margin-top: 10px;
+            border: 1px black solid;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="result1">点击发送请求</button>
+    <div id="result2"></div>
+</body>
+<script>
+    const result = document.getElementById('result1');
+    
+    result.onclick = function () {
+        const xhr = new XMLHttpRequest();
+        // xhr.response('json');
+
+        xhr.open('GET', 'http://127.0.0.1:8000/get-server?a=100&b=200');
+        // xhr.open('GET','http://127.0.0.1:8000/post-server');
+        // xhr.open('GET','http://127.0.0.1:8000/all-server');
+        xhr.send();
+        xhr.onreadyStateStatus = function () {
+
+            if (xhr.readyState === 4) {
+                if (xhr.status >= 200 && xhr.status < 300) {
+                    console.log(xhr.response);
+                    result1.innerHTML = xhr.response;
+                }
+            }
+        };
+    };
+
+</script>
+
+</html>

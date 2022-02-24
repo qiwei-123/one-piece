@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>选择器</title>
+    <style>
+        /*
+            此时  ^=  以abc  开头的属性都改变
+        */
+        p[title^="abc"]{
+            color: pink;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+    <!--     
+        [属性名] 选择含有指定属性的元素
+        [属性名=属性值] 选择含有指定属性和属性值的元素
+        [属性名^=属性值] 选择属性值以指定值开头的元素
+        [属性名$=属性值] 选择属性值以指定值结尾的元素
+        [属性名*=属性值] 选择属性值中含有某值的元素的元素  eg：含有abc的都改变
+    -->
+
+
+        <p title="abc">春晓</p>
+        <p title="abcde">春眠不觉晓</p>
+        <p title="hello">处处闻啼鸟</p>
+        <p title="d">夜来风雨声</p>
+        <p title="e">花落知多少</p>
+
+</body>
+</html>

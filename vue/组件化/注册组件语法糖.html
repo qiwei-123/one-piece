@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>注册组件语法糖</title>
+</head>
+
+<body>
+  <div id="cc">
+    <cpn></cpn>
+    <cpn2></cpn2>
+
+  </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+  // 内部实际 调用了extend 全局组件
+  Vue.component('cpn', {
+    template:
+      `      
+      <div>
+        <h2>标题111</h2>
+        <p>内容1111</p>
+        <p>内容1111</p>
+      </div>
+      `
+  })
+
+  const cc = new Vue({
+    el: '#cc',
+    // 局部组件
+    components: {
+      'cpn2': {
+        template:
+          `      
+      <div>
+        <h2>标题222</h2>
+        <p>内容222</p>
+        <p>内容2222</p>
+      </div>
+          `
+
+      }
+    }
+
+  })
+
+
+</script>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        Es6引入 rest 参数 用于获取函数的实参 用来代替arguments
+        Es5 获取实参的方式
+        function date(){
+            console.log(arguments);
+        }
+        date('卡特','科比','库里');
+
+        rest 参数
+        - 当参数多个时 rest参数应放在最后
+
+    */
+    // function name(...args) {
+    //     console.log(args);
+    // }
+    // name('xixi','hehe','haha');
+    function fn(a,b,...args) {
+        console.log(a);
+        console.log(b);
+        console.log(args);
+    }
+    fn(1,2,3,44567);
+</script>
+</html>

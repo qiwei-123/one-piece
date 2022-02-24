@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test</title>
+</head>
+<style>
+    #box1 {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        border-radius: 20px;
+
+    }
+
+    #box1 p {
+        text-align: center;
+        color: red;
+    }
+</style>
+
+<body>
+    <button id="btn01">点击更改样式</button>
+    <button id="btn02">点击获取当前样式文本</button>
+    <button id="btn03">点击更改为初始样式</button>
+    <br>
+    <br>
+    <div id="box1">
+        <p>object</p>
+    </div>
+</body>
+<script>
+    window.onload = function () {
+        var box1 = document.querySelector("#box1");
+        var btn01 = document.querySelector("#btn01");
+        var btn02 = document.querySelector("#btn02");
+        var btn03 = document.querySelector("#btn03");
+
+        /*
+            style
+            - 元素.style.样式 = 样式值;
+            - 在样式表中 样式后 添加！important 属性 则无法通过JS改变样式
+            - 改变样式 实际是改变的内联样式
+            - 当样式中有 - 连接时  将符号去掉并将符号狗的字母大写  驼峰式写法
+            currentStyle
+            - 仅支持IE8 其他浏览器无法使用
+            - 元素.currentStyle.样式 = 样式值;
+            getComputedColor
+            - IE9+ 可以使用 或其他浏览器 
+            - 可以获取元素当前的样式
+            - 此方法为window的方法 可直接使用
+            - 括号中为两个参数
+                1.要获取的样式元素
+                2.可以传递一个伪元素 一般传null
+            */
+        btn01.onclick = function () {
+            box1.style.width = "120px";
+            box1.style.height = "120px";
+            box1.style.backgroundColor = "gray";
+            box1.style.borderRadius = "0px";
+        };
+
+        btn02.onclick = function () {
+            alert(getComputedStyle(box1, null).width);
+            alert(getComputedStyle(box1, null).height);
+            alert(getComputedStyle(box1, null).backgroundColor);
+            alert(getComputedStyle(box1, null).borderRadius);
+        };
+
+        btn03.onclick = function () {
+            box1.style.width = "200px";
+            box1.style.height = "200px";
+            box1.style.backgroundColor = "blue";
+            box1.style.borderRadius = "20px";
+        };
+        function getStyle(obj, name) {
+            if (window.getComputedStyle) {
+                // 正常浏览器
+                return getComputedStyle(box1, null)[name];
+
+            } else {
+                // IE8
+                return obj.currentStyle[name];
+
+            }
+        }
+    }
+</script>
+
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则表达式3</title>
+</head>
+<body>
+    
+</body>
+<script>
+    /*
+        量词
+        - 通过量词可以设置一个内容出现的次数
+        - 量词只对它前面的一个内容起作用   多个可用(){}
+        - {n} 正好出现n次
+        - {m,n} 出现 m - n次
+        - {m,} m次以上
+        - + 至少一个, 相当于{1,}
+        - * 0个或多个,相当于{0,}
+        - ? 0个或1个,相当于{0,1}
+        - ^ 表示开头
+        - $ 表示结尾
+        - ^ & 则要求字符串必须完全符合正则表达式
+    */
+   console.log("练习1:");
+    var reg = /(ab){3}/;
+    // false
+    console.log(reg.test("ababac"));
+    // true
+    console.log(reg.test("abababcccc"));
+
+
+    console.log("练习2:");
+    var reg = /ef{2,3}/;
+    // false
+    console.log(reg.test("efef"));
+    // true
+    console.log(reg.test("eff"));
+
+
+    console.log("练习3:");
+    var reg = /a[b]{2,}c/;
+    // false
+    console.log(reg.test("abc"));
+    // true
+    console.log(reg.test("abbc"));
+
+
+    console.log("练习4:");
+    var reg = /a+bv/;
+    // false
+    console.log(reg.test("kobe"));
+    // true
+    console.log(reg.test("abvKobe"));
+
+
+    console.log("练习5:");
+    var reg = /a*bnm/;
+    // false
+    console.log(reg.test("abne"));
+    // true
+    console.log(reg.test("Kobeaabnm"));
+
+
+</script>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>响应式登录界面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .content {
+            width: 100vw;
+            padding: 100vh;
+            background-color: aqua;
+            justify-content: center;
+            align-items: center;
+            background: url(../photo_cj/星空.webp) no-repeat;
+            background-size: 100% auto;
+            
+        }
+        .login-content {
+            width: 800px;
+            height: 360px;
+            background-color: rgb(52, 0, 73);
+            border-radius: 30px;
+            padding: 30px;
+        }
+        .banner-box {
+            display: inline-block;
+            width: 500px;
+            height: 100%;
+            /* background-color: rgb(0, 92, 92); */
+            border-radius: 20px 0 0 20px;
+            background: url(../photo_cj/logo2.webp) no-repeat;
+            background-size: cover;
+        }
+        .login-box {
+            width: 330px;
+            height: 100%;
+            background-color: rgb(172, 106, 26);
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            border-radius: 0 30px 30px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .login-box > h1 {
+            font-size: 36px;
+            margin: 60px 0px;
+            color: #fff;
+        }
+        .login-box > input {
+            margin-bottom: 20px;
+            width: 200px;
+            height: 36px;
+            padding: 0px 20px;
+            border-radius: 36px;
+            border: none;
+            outline: none;
+            font-size: 18px;
+        }
+        .login-btn {
+            margin: 20px;
+            width: 200px;
+            height: 40px;
+            background-color: rgb(122, 0, 223);
+            border: none;
+            border-radius: 40px;
+            color: #fff;
+            font-size: 18px;
+        }
+        @media screen and (max-width: 900px) {
+            .login-content {
+                margin: 0px 30px;
+            }
+            .banner-box {
+                border-radius: 20px;
+            }
+            .login-box {
+                background-color: rgba(52, 0, 73, 0.5);
+            }
+        }
+        @media screen and (max-width: 600px) {
+            .content {
+                background: url(../photo_cj/logo3.webp) no-repeat center;
+            }
+            .login-content {
+                background-color: rgba(52, 0, 73, 0);
+            }
+            .banner-box {
+                display: none;
+            }
+            .login-box {
+                position: initial;
+                margin: -40px auto;
+                background-color: rgba(52, 0, 73, 0);
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="content">
+        <div class="login-content">
+            <a href="" class="banner-box"></a>
+            <div class="login-box">
+                <h1>账号登录</h1>
+                <input type="text" placeholder="账号">
+                <input type="text" placeholder="密码">
+                <button class="login-btn">登录</button>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+
+</script>
+
+</html>

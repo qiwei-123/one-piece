@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>v-model修饰符</title>
+</head>
+
+<body>
+  <div id="demo">
+    <!-- 
+      lazy 
+        默认情况下 v-model默认是在input事件中同步输入框的数据的
+        一旦有数据发生改变对应的data中的数据就会自动发生改变
+        此修饰符可以让修饰数据在失去焦点或回车时才更新
+      number 
+        默认情况下 无论输入数字还是字符串类型数据 都会被当做字符串类型处理
+        但如果处理的是数字类型 最好将其以数字类型处理
+        此修饰符可将输入框输入的内容自动转成数字类型
+      trim
+       若输入的内容首尾有很多的空格 通常希望去除
+       此修饰符可以过滤左右两边的空格
+    -->
+
+    <label for="lazy">
+      <input type="text" v-model.lazy="lazMessage" id="lazy">{{lazMessage}}
+    </label>
+    <br>
+    <br>
+    <label for="number">
+      <!-- type为number时 输入框只能为number类型 -->
+      <input type="number" v-model.number="numMessage" id="number">{{numMessage}}-{{typeof numMessage}}
+    </label>
+    <br>
+    <br>
+    <label for="trim">
+      <input type="text" v-model.trim="trMessage" id="trim">{{trMessage}}
+    </label>
+
+  </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+
+  const model = new Vue({
+    el: '#demo',
+    data: {
+      lazMessage: 'lazy文本',
+      numMessage: 'number文本',
+      trMessage: '                 trim文本',
+    },
+  })
+
+</script>
+
+</html>

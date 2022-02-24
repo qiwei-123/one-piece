@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>原型对象</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    // 使用in检查对象中是否含有某个属性时，如果对象中没有但是原型对象中有，也会返回true
+    // console.log("name" in mc);
+
+    // 可以使用对象的hasOwnProerty()来检查对象自身中是否含有该属性
+    // 使用该方法只有当对象中含有属性时,才会返回true
+        // console.log(mc.hasOwnProperty("age"));
+        // console.log(mc.hasOwnProperty("hasOwnProperty"));
+        // 原型对象也是对象,也有原型
+        // 当使用一个对象的属性或方法时,会先在自身中寻找
+        //     自身中若有,则直接使用
+        //     自身中若没有,则到原型对象中去寻找,若有，则直接使用
+        //     若没有，则到原型的原型中寻找,直到找到Object对象的原型
+        //      Object对象的原型没有原型,若在Object中依然没找到,则返回undefined
+
+    function MyClass() {
+        
+    }
+    MyClass.prototype.name = "我是密山彭于晏";
+    var mc = new MyClass();
+    mc.age = 18;
+    console.log(mc.__proto__);
+
+</script>
+
+</html>

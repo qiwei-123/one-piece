@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>购物车案例</title>
+    <style>
+        table {
+            border: 1px solid #e9e9e9;
+            border-collapse: collapse;
+            border-spacing: 0;
+        }
+
+        th,
+        td {
+            padding: 8px 16px;
+            border: 1px solid #e9e9e9;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f7f7f7;
+            color: #5c6b77;
+            font-weight: 600;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="demo">
+        <div v-if="books.length">
+            <table>
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>书籍名称</td>
+                        <td>出版日期</td>
+                        <td>价格</td>
+                        <td>购买数量</td>
+                        <td>操作</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="(items, index) in books">
+                        <td>{{items.id}}</td>
+                        <td>{{items.name}}</td>
+                        <td>{{items.date}}</td>
+                        <td>{{items.price | showPrice}}</td>
+                        <td>
+                            <button @click="decrement(index)" :disabled="items.count <= 0">-</button>
+                            {{items.count}}
+                            <button @click="increment(index)" :disabled="items.count >= 10">+</button>
+                        </td>
+                        <td>
+                            <button @click="removeBtnClick(index)">移除</button>
+                            <!-- 也可以直接写这种形式 books.splice(index, 1) -->
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <h2>总价格: {{totalPrice | showPrice}}</h2>
+        </div>
+        <h2 v-else>
+            购物车空空如也
+        </h2>
+    </div>
+    <!-- 
+        创建一个表单将所需标题以及所需组件写入 并写出CSS
+        VUE： 
+            将书籍信息动态写入 书籍价格用tofixed方法保留两位小数
+            购买数量按钮<0 时  不可用
+            移除按钮： 移除当前书籍 (index, 1) 当书籍全部移除，显示文本'购物车空空如也'
+            
+            总价格：computed 书籍价格乘以数量 
+
+
+
+     -->
+</body>
+<script src="../vue.js"></script>
+
+<script>
+    const demo = new Vue({
+        el: '#demo',
+        data: {
+            books: [
+                {
+                    id: 110,
+                    name: '《百年孤独》',
+                    date: '2009-9',
+                    price: '78',
+                    count: '0',
+                },
+                {
+                    id: 111,
+                    name: '《围城》',
+                    date: '2016-12',
+                    price: '45',
+                    count: '0',
+                },
+                {
+                    id: 112,
+                    name: '《活着》',
+                    date: '2019-9',
+                    price: '69',
+                    count: '0',
+                },
+                {
+                    id: 113,
+                    name: '《老人与海》',
+                    date: '2014-6',
+                    price: '101.00',
+                    count: '0',
+                },
+                {
+                    id: 114,
+                    name: '《傲慢与偏见》',
+                    date: '2012-1',
+                    price: '120',
+                    count: '0',
+                },
+                {
+                    id: 115,
+                    name: '《平凡的世界》',
+                    date: '20018-2',
+                    price: '129',
+                    count: '0',
+                },
+            ]
+        },
+        methods: {
+            // 减少购买数量
+            decrement(index) {
+                this.books[index].count--
+            },
+            // 增加购买数量
+            increment(index) {
+                this.books[index].count++
+            },
+            // {{items.parseFloat(price).toFixed(2)}}
+            // 删除按钮  若放在computed中 !!!!!!!!!!有问题 会报错
+            removeBtnClick(index) {
+                this.books.splice(index, 1)
+            }
+        },
+        computed: {
+            totalPrice() {
+                let totalPrice = 0;
+                // for (let i = 0; i < this.books.length; i++) {
+                //     totalPrice += this.books[i].price * this.books[i].count;
+                // }
+
+                // for (let i in this.books) {
+                // 将i作为数组中的索引
+                //     const book = this.books[i];
+                //     totalPrice += book.price * book.count;
+                // }
+                // for (let j of this.books) {
+                //     totalPrice += j.price * j.count;
+                // }
+                // 高阶函数 reduce
+                
+                return totalPrice;
+            }
+        },
+        // 过滤器
+        filters: {
+            showPrice(price) {
+                // 必须 Number(price).toFixed(2) 否则报错
+                return '¥' + Number(price).toFixed(2)
+            }
+        }
+    })
+
+
+
+
+</script>
+
+</html>

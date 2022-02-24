@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue/vue.js"></script>
+</head>
+
+<body>
+    <div id="interval">
+        <h1>当前计数 : {{counter}}</h1>
+        <button v-on:click="increment">+</button>
+        <button @click="subtraction">-</button>
+        <!-- 
+            语法糖：简写
+         -->
+    </div>
+</body>
+<script>
+    const interval = new Vue({
+        el: '#interval',
+        data: {
+            counter: 0
+        },
+        methods: {
+            increment: function () {
+                // 此处需用this 若直接counter++ 会到全局中寻找counter这个变量 浏览器报错
+                this.counter++
+                console.log('+Achieve');
+            },
+            subtraction: function () {
+                this.counter--
+                console.log('-Achieve');
+            }
+        }
+
+    })
+</script>
+
+</html>

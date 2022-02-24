@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1 {
+            width: 50px;
+            height: 50px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 200px;
+            top: 400px;
+        }
+
+        #div2 {
+            width: 45px;
+            height: 45px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 210px;
+            top: 390px;
+        }
+
+        #div3 {
+            width: 42px;
+            height: 42px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 230px;
+            top: 370px
+        }
+
+        #div4 {
+            width: 38px;
+            height: 38px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 250px;
+            top: 350px;
+        }
+
+        #div5 {
+            width: 35px;
+            height: 35px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 270px;
+            top: 330px;
+        }
+
+        #div6 {
+            width: 30px;
+            height: 30px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 290px;
+            top: 310px;
+        }
+
+        #div7 {
+            width: 20px;
+            height: 20px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 310px;
+            top: 295px;
+        }
+
+        #div8 {
+            width: 15px;
+            height: 15px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 330px;
+            top: 285px;
+        }
+
+        #div9 {
+            width: 13px;
+            height: 13px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 340px;
+            top: 275px;
+        }
+
+        #div10 {
+            width: 12px;
+            height: 12px;
+            background: skyblue;
+            border-radius: 50%;
+            position: fixed;
+            left: 350px;
+            top: 265px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="div1"></div>
+    <div id="div2"></div>
+    <div id="div3"></div>
+    <div id="div4"></div>
+    <div id="div5"></div>
+    <div id="div6"></div>
+    <div id="div7"></div>
+    <div id="div8"></div>
+    <div id="div9"></div>
+    <div id="div10"></div>
+</body>
+<script>
+    var divs = document.getElementsByTagName("div");
+    document.onmousemove = function (event) {
+        var evt = event || window.event;
+        var x = evt.clientX;
+        var y = evt.clientY;
+        div1.style.left = x - 40 + "px";
+        div1.style.top = y - 40 + "px";
+        for (i = divs.length - 1; i > 0; i--) {
+            divs[i].style.left = parseInt(getComputedStyle(divs[i - 1], null)["left"]) + "px";
+            divs[i].style.top = parseInt(getComputedStyle(divs[i - 1], null)["top"]) + "px";
+        }
+    }
+</script>
+
+</html>

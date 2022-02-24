@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>父子通信_双向绑定案例</title>
+</head>
+
+<body>
+  <div id="demo">
+    <cpn :number1="num1" :number2="num2" @sResponse1="sResponse1" @sResponse2="sResponse2"></cpn>
+  </div>
+</body>
+
+<template id="tem">
+  <div>
+    <h2>{{number1}}</h2>
+    <h2>{{rnumber1}}</h2>
+    <input type="text" :value="rnumber1" @input="rInput1">
+    <h2>{{number2}}</h2>
+    <h2>{{rnumber2}}</h2>
+    <input type="text" :value="rnumber2" @input="rInput2">
+  </div>
+</template>
+
+<script src="../vue.js"></script>
+<script>
+
+
+  const demo = new Vue({
+    el: '#demo',
+    data: {
+      num1: 1,
+      num2: 3,
+    },
+    methods: {
+      sResponse1(value) {
+        this.num1 = value
+      },
+      sResponse2(value0) {
+        this.num2 = value
+
+      }
+    },
+    components: {
+      cpn: {
+        template: '#tem',
+        props: {
+          number1: Number,
+          number2: Number
+        },
+        // 组件中的data必须是函数
+        data() {
+          return {
+            rnumber1: this.number1,
+            rnumber2: this.number2
+          }
+        },
+        methods: {
+          rInput1(event) {
+            this.rnumber1 = event.target.value;
+            this.$emit('我是number1', this.rnumber1);
+          },
+          rInput2(event) {
+            this.rnumber2 = event.target.value;
+            this.$emit('我是number2', this.rnumber2);
+
+          }
+        }
+      }
+    }
+  })
+</script>
+
+</html>

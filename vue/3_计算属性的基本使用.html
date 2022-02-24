@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>计算属性的基本使用</title>
+</head>
+
+<body>
+    <!-- 
+        模板中可以直接通过茶之语法显示一些data中的数据
+        但是在某些情况， 可能需要对数据进行一些转化后在显示
+        或者需要将多个数据结合起来进行显示
+            比如 firstName和lastName 两个变量 我们需要显示完整的名称
+            若多个地方都需要显示完整的名称 我们就需要写多个{{firstName}} {{lastName}}
+        计算属性是写在实例 computed 选项中的
+
+    -->
+
+    <div id="div">
+        <h2 :style="getStyle1()">{{firstName}} {{lastName}}</h2>
+        <h2 :style="getStyle2()">{{firstName + ' ' + lastName}}</h2>
+        <h2 :style="getStyle3()">fullName : {{fullName}}</h2>
+        <h2 :style="getStyle4()">getFullname() : {{getFullname()}}</h2>
+    </div>
+</body>
+<script src="../vue/vue.js"></script>
+<script>
+
+    const computed = new Vue({
+        el: 'div',
+        data: {
+            firstName: 'Kobe',
+            lastName: 'Bryant',
+            // 字体样式
+            bgColor1: 'aqua',
+            bgColor2: 'blue',
+            bgColor3: 'red',
+            bgColor4: 'green',
+            fontS1: '15px',
+            fontS2: '20px',
+            fontS3: '30px',
+            fontS4: '40px',
+        },
+        computed: {
+            fullName: function () {
+                return this.firstName + ' ' + this.lastName
+            }
+        },
+        methods: {
+            getFullname: function () {
+                return this.firstName + ' ' + this.lastName
+            },
+            // 更改样式方法
+            getStyle1: function () {
+                return { backgroundColor: this.bgColor1, fontSize: this.fontS1 }
+            },
+            getStyle2: function () {
+                return { backgroundColor: this.bgColor2, fontSize: this.fontS2 }
+            },
+            getStyle3: function () {
+                return { backgroundColor: this.bgColor3, fontSize: this.fontS3 }
+            },
+            getStyle4: function () {
+                return { backgroundColor: this.bgColor4, fontSize: this.fontS4 }
+            },
+
+        }
+    })
+</script>
+
+</html>

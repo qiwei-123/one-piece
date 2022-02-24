@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数练习</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background-color: #58a;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="ad" class="link"></div>
+</body>
+<script>
+    // // 要求1 点击div 2s 后
+    // let div = document.getElementById("ad");
+    // div.addEventListener("click", function add() {
+    //     // let _this = this;
+    //     setTimeout(() => {
+    //         // 此时此处不可用this.style.background = 'pink'; 因 此时this调用window的style
+    //         // 所以应将this进行保存 且将定时器的箭头函数改为function形式
+    //         // 常用保存this变量名 _this self等
+    //         this.style.background = 'pink';
+    //         // 此时this可以使用的原因为 调用的this作用域为监听函数add下 非window
+    //     }, 2000);
+    //     console.log('执行中...');
+    //     // var sty = div.style.background;
+    //     // while (sty == 'pink') {
+    //     //     console.log('执行完毕');
+    //     // }
+    // })
+
+
+    // let div = document.getElementById("ad");
+    // this.onclick = function () {
+    //     console.log('...点击成功');
+    //     let _this = this;
+    //     setTimeout(function () {
+    //         let sty = _this.style.background = 'red';
+    //         while (sty == 'red') {
+    //             console.log('执行完毕...');
+    //         }
+    //     }, 2000);
+
+    // };
+
+    // 要求2 从数组中返回偶数的元素
+    // const arr = [1,295,8000,231,2,78];
+
+    // // const choose = arr.filter(items => {
+    // //     if (items % 2 === 0) {
+    // //         return true;
+    // //     } else {
+    // //         return false;
+    // //     }
+    // // })
+    // const choose = arr.filter(items => items % 2 === 0)
+    // console.log(choose);
+</script>
+
+</html>

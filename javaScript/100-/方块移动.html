@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1 {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* 使box1脱离文档流 则可以随鼠标点击事件移动 */
+            position: absolute;
+        }
+
+        #box2 {
+            width: 200px;
+            height: 200px;
+            background-color: yellow;
+            margin-left: 300px;
+            margin-top: 300px;
+            /* position: absolute; */
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+</body>
+<script>
+    window.onload = function () {
+        // 获取两个box
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+
+        drag(box1);
+        drag(box2);
+    };
+    /*
+        提取一个专门用来设置拖拽的函数
+        参数 : 开启拖拽的元素
+        
+    */
+    function drag(obj) {
+        // 想让box1移动 需给其绑定鼠标按下属性   设置完拖拽的函数drag 将box1改成obj 在window.onload中设置drag(想拖拽的div)
+        obj.onmousedown = function (event) {
+            /*
+                设置box1捕获所有鼠标按下的事件
+                - setCapture()
+                - 只有IE支持 但是在火狐中调用时不会报错
+                - 若使用chrome调用 则会报错
+            */
+            obj.setCapture &&obj.setCapture();
+            // 兼容
+            event = event || window.event;
+            // div水平偏移量 鼠标.clientX - 元素.offsetLeft  若不设置此偏移量 鼠标在块右下角点时 会回到左上角再进行移动 不美观
+            // div垂直偏移量 鼠标.clientY - 元素.offsetTop
+            var divl = event.clientX - obj.offsetLeft;
+            var divt = event.clientY - obj.offsetTop;
+            // 块移动时 应将函数绑定给document
+            document.onmousemove = function (event) {
+                // 兼容
+                event = event || window.event;
+                // 获取块的X Y
+                var x = event.clientX - divl;
+                var y = event.clientY - divt;
+                // 块的位置
+                obj.style.left = x + "px";
+                obj.style.top = y + "px";
+
+            };
+            obj.onmouseup = function () {
+                // 当鼠标抬起时 停止块的移动 则会使块停留在当前鼠标所在位置
+                document.onmousemove = null;
+                // 再停止鼠标抬起事件 否则每次鼠标抬起都会触发事件
+                obj.onmouseup = null;
+            };
+        };
+
+    };
+</script>
+
+</html>

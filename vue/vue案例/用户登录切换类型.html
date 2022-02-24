@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件渲染案例_用户登录切换类型</title>
+</head>
+
+<body>
+    <!-- 用户在登录时，可以切换使用用户账号登录或邮箱登录 -->
+    <div id="div">
+        <span v-if="judge">
+            <!-- for和id绑定 点击文字获取input焦点 -->
+            <label for="user">用户账号:</label>
+            <input placeholder="请输入您的账号" id="user">
+        </span>
+        <span v-else>
+            <label for="email">邮箱账号:</label>
+            <input placeholder="请输入您的邮箱" id="email">
+        </span>
+        <button @click="changeType">切换登录类型</button>
+
+    </div>
+
+</body>
+<script src="../vue/vue.js"></script>
+<script>
+    const admin = new Vue({
+        el: '#div',
+        data: {
+            judge: true
+        },
+        methods: {
+            changeType() {
+                this.judge = !this.judge
+            }
+        }
+    })
+</script>
+
+</html>

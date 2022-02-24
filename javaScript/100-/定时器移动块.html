@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>定时器移动块</title>
+    <style>
+        #box {
+            margin-top: 10px;
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+
+        #box2 {
+            width: 100px;
+            height: 100px;
+            margin-top: 120px;
+            background-color: blue;
+            position: absolute;
+
+        }
+
+        #box3 {
+            width: 100px;
+            height: 100px;
+            margin-top: 230px;
+            background-color: pink;
+            position: absolute;
+
+        }
+
+        #solid {
+            width: 0px;
+            height: 1000px;
+            border: 1px black solid;
+            margin: 0px 0px 0px 800px;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn1">向左移动</button>
+    <button id="btn2">向右移动</button>
+    <button id="btn3">第二个块向右移动</button>
+    <button id="btn4">测试按钮</button>
+    <div id="box"></div>
+    <div id="box2"></div>
+    <div id="box3"></div>
+    <div id="solid"></div>
+</body>
+<script src="tools.js"></script>
+<script>
+    window.onload = function () {
+        // 获取两个按钮以及box
+        var btn1 = document.getElementById("btn1");
+        var btn2 = document.getElementById("btn2");
+        var btn3 = document.getElementById("btn3");
+        var btn4 = document.getElementById("btn4");
+        var box = document.getElementById("box");
+        var timer;
+        
+        btn1.onclick = function () {
+            move(box, "width", 0, 10);
+        };
+        btn2.onclick = function () {
+            move(box, "width", 800, 10);
+        };
+        btn3.onclick = function () {
+            move(box2, "width", 800, 10);
+        };
+        btn4.onclick = function () {
+            move(box3, "width", 800, 10, function () {
+                move(box2, "width", 800, 10, function () {
+                    move(box, "width", 800, 10, function () {
+
+                    });
+
+                });
+
+            });
+        };
+
+
+
+
+        // // 给btn1按钮单独绑定单击响应函数
+        // btn1.onclick = function () {
+        //     clearInterval(timer);
+        //     // 若使块的移动显示更顺畅 设置定时器
+        //     timer = setInterval(function () {
+        //         // 获取box原来的属性
+        //         var oldValue = parseInt(getStyle(box, "left"));
+        //         var newValue = oldValue - speed;
+        //         box.style.left = newValue + "px";
+        //         if (newValue < 0) {
+        //             newValue = 0;
+        //         }
+        //         if (newValue == 0) {
+        //             clearInterval(timer);
+        //         }
+        //     }, 30);
+        // };
+        // // 给btn2按钮单独绑定单击响应函数
+        // btn2.onclick = function () {
+        //     clearInterval(timer);
+        //     timer = setInterval(function () {
+        //         var oldValue = parseInt(getStyle(box, "left"));
+        //         var newValue = oldValue + speed;
+        //         box.style.left = newValue + "px";
+        //         if (newValue > 800) {
+        //             newValue = 800;
+        //         }
+        //         if (newValue == 800) {
+        //             clearInterval(timer);
+        //         }
+
+        //     }, 30);
+
+
+    };
+
+    // };
+</script>
+
+</html>

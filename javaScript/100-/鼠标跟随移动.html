@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>鼠标跟随移动</title>
+</head>
+<style>
+    #box {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+
+        /* 开启绝对定位 否则无法移动块 */
+        position: absolute;
+    }
+
+    body {
+        height: 2000px;
+        background-color: pink;
+    }
+</style>
+
+<body>
+    <div id="box"></div>
+</body>
+<script>
+    window.onload = function () {
+
+        // 使div跟随鼠标移动
+        var box = document.getElementById("box");
+        document.onmousemove = function (event) {
+            var event = event || window.event;
+            /*
+                chrome认为浏览器的滚动天是body的 可以通过body.scrollTop来获取
+                火狐等浏览器认为浏览器的滚动条是HTML的
+            */
+            var st = document.body.scrollTop || document.documentElement.scrollTop;
+            // 获取鼠标的坐标
+            // var x = event.clientX;
+            // var y = event.clientY;
+            // 到此为止 若浏览器出现滚动条 则块与鼠标距离越来越远 
+            var x = event.pageX;
+            var y = event.pageY;
+            // clientX此属性只是用于获取可见窗口的坐标 但div的移动是相对于整个页面的
+            //  不带有px 若使其移动 需加px
+            // pageX pageY 是相对于整个界面的 在IE8中不支持  
+            box.style.left = x +st+ "px";
+            box.style.top = y +st+"px";
+
+        };
+    };
+</script>
+
+</html>

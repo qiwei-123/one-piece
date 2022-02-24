@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=\\, initial-scale=1.0">
+    <title>练习_(v-for与v-bind)</title>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 点击列表中的哪一项 该项文字变为红色 -->
+    <div id="demo_div">
+        <ul>
+            <li v-for="(item, index) in movies" 
+            :class="{ active: currentIndex === index }" 
+            @click="liClick(index)">
+                {{index}}.{{item}}</li>
+        </ul>
+    </div>
+</body>
+<script src="../vue.js"></script>
+<script>
+    const demo = new Vue({
+        el: '#demo_div',
+        data: {
+            movies: ['火影忍者', '海贼王', '名侦探柯南', '花园宝宝'],
+            currentIndex: 0
+        },
+        methods: {
+            // getClass() {
+            //     return { active: this.currentIndex === this.index }
+            // },
+            liClick(index) {
+                this.currentIndex = index
+            }
+        }
+    })
+</script>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>编译作用域</title>
+</head>
+
+<body>
+  <!-- 
+    编译作用域 
+      当父子组件都有布尔值使其显示或不显示时
+      在父组件作用域内 布尔值 以父组件中为准
+      在子组件作用域内 布尔值 以子组件中为准
+   -->
+  <div id="demo">
+    <cpn v-show="isShow"></cpn>
+    <h2>---------------------------</h2>
+    <cpn v-show="false"></cpn>
+  </div>
+</body>
+
+<template id="tem">
+  <div>
+    <h2>子组件</h2>
+    <button v-show="isShow">按钮</button>
+  </div>
+</template>
+<script src="../vue/vue.js"></script>
+<script>
+  const demo = new Vue({
+    el: '#demo',
+    data: {
+      isShow: true
+    },
+    components: {
+      cpn: {
+        template: '#tem',
+        data() {
+          return {
+            isShow: false
+          }
+        }
+      }
+    }
+  })
+</script>
+
+</html>

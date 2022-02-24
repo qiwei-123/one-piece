@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>this</title>
+</head>
+<body>
+    
+</body>
+<script>
+    //创建
+    var name = "全局";
+
+    function fun() {
+        console.log(this.name);
+    };
+    //当我想要调用obj.sayName()时可以输出obj的名字，此时需要用this.name
+    var obj = {
+        name : "孙悟空",
+        sayName : fun
+    };
+
+    var obj2 = {
+        name : "猪八戒",
+        sayName : fun
+    };
+    obj2.sayName();
+</script>
+</html>
