@@ -3,18 +3,18 @@
     <keep-alive exclude="Detail">
       <router-view />
     </keep-alive>
-    <main-tabbar />
+    <Tabbar />
   </div>
 </template>
 
 <script>
 // 导入组件后 需在components中注册
-import MainTabbar from "./components/content/MainTabbar/MainTabbar.vue";
+import Tabbar from "./components/common/Tabbar/Tabbar.vue";
 
 export default {
   name: "App",
   components: {
-    MainTabbar,
+    Tabbar,
   },
 };
 </script>

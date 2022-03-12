@@ -1,6 +1,6 @@
 <template>
-  <div class="back-top" @click="topClick">
-    <img src="tabbar-2/assets/img/top.png" alt="">
+  <div class="back-top">
+    <img src="@/img/top.png" alt="">
   </div>
 </template>
 
@@ -22,7 +22,8 @@ export default {
   bottom: 55px;
 }
 .back-top img {
-  width: 43px;
-  height: 43px; 
+  width: 35px;
+  height: 35px;
+  color: aliceblue;
 }
 </style>

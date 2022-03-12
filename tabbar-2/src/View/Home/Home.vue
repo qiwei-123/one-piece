@@ -1,24 +1,24 @@
 <template>
   <div id="Home">
     <nav-bar class="home-nav"><div slot="center">购物街</div></nav-bar>
-    <tab-control
+    <!-- <tab-control
       :titles="['流行', '新款', '精选']"
       class="tab-control"
       @tabClick="tabClick"
       ref="tabControl1"
       v-show="isTabFixed"
-    />
+    /> -->
     <scroll
       class="content"
       ref="scroll"
       :prop-type="3"
       @scroll="contentScroll"
       :pull-up-load="true"
-      @pullingUp="loadMore"
     >
+      <!-- @pullingUp="loadMore" -->
+
       <home-swiper :banners="banners" @swipeImageLoad="swipeImageLoad" />
       <recommend-view :recommends="recommends" />
-      <feature-view />
       <tab-control
         :titles="['流行', '新款', '精选']"
         @tabClick="tabClick"
@@ -40,10 +40,9 @@ import FeatureView from "./childSwiper/FeatureView.vue";
 import NavBar from "../../components/common/navbar/NavBar.vue";
 import TabControl from "../../components/content/tabControl/TabControl.vue";
 import GoodsList from "../../components/content/Goods/GoodsList.vue";
-// import GoodsListItem from "../../components/content/Goods/GoodsListItem.vue";
 import BackTop from "../../components/content/top/Top.vue";
 
-import { getMultiData, getHomeGoods } from "../../../network/home";
+import { getMultiData } from "../../../network/home";
 // 导入 debounce 防抖函数
 import { debounce } from "../../components/common/utils";
 
@@ -62,9 +61,6 @@ export default {
     Scroll,
   },
   data() {
-    // return {
-    //   result: null
-    // }
     return {
       banners: [],
       recommends: [],
@@ -109,70 +105,239 @@ export default {
         // 我使用的是数组的api arr.push() 这个方法会触发vue的响应式 从而更新了传入子组件的数组banners
         // this.banners = res.data.banner.list;
         this.banners.push(...res.data.banner.list);
-        console.log("home---this.banners", this.banners);
+        // console.log("home---this.banners", this.banners);
         this.recommends = res.data.recommend.list;
+        console.log("222", this.recommends);
       });
     },
     getHomeGoods1(type) {
-      const page = this.goods[type].page + 1; //刚才这里没加this
-      getHomeGoods(type, page).then((res) => {
-        // 笨比方法 将数据动态传入 遍历
-        // let nums1 = [];
-        // let nums2 = [10, 20, 30];
-        // for(let i of nums2){
-        //   nums1.push(n)
-        // }
-        // 高级传入
-        // nums1.push(...nums2)
-        // console.log(this.goods);
-        // console.log('------', this);
-        // console.log("data", res.data);
-        const jk = [
-          {
-            title: "title1",
+      // const page = this.goods[type].page + 1; //刚才这里没加this
+      // getHomeGoods(type).then((res) => {
+      // 笨比方法 将数据动态传入 遍历
+      // let nums1 = [];
+      // let nums2 = [10, 20, 30];
+      // for(let i of nums2){
+      //   nums1.push(n)
+      // }
+      // 高级传入
+      // nums1.push(...nums2)
+      // console.log(this.goods);
+      // console.log('------', this);
+      // console.log("data", res.data);
+      const popList = [
+        {
+          show: {
+            img: "https://img10.360buyimg.com/seckillcms/s500x500_jfs/t1/146021/17/23908/196019/6228455aE71e2f934/64984ad7accde68a.jpg",
           },
-          {
-            title: "title2",
+          title:
+            "卧派 实木沙发客厅家具可拆洗小户型布艺沙发中式现代冬夏两用储物转角沙发组合 17 四人位+贵妃+茶几",
+          price: "¥112",
+        },
+        {
+          show: {
+            img: "https://img12.360buyimg.com/n2/jfs/t1/203270/9/1853/519484/611c69c4Ea39e6150/7b805156b99ecbbb.jpg",
           },
-          {
-            title: "title3",
+          title:
+            "卧派 电视柜 实木电视柜客厅家具现代中式简约伸缩电视机柜地柜709# 胡桃色 电视柜",
+          price: "¥289",
+        },
+        {
+          show: {
+            img: "https://img11.360buyimg.com/n2/jfs/t1/203350/12/1852/598042/611c64b6Eb7a7cbf5/d308b0b7f5af3e1e.jpg",
           },
-          {
-            title: "title4",
+          title:
+            "卧派 餐桌实木餐桌现代中式折叠餐桌伸缩饭桌家用方形圆形餐桌椅套装 实木 一桌六椅(903#餐椅*6)",
+          price: "¥908",
+        },
+        {
+          show: {
+            img: "https://img14.360buyimg.com/n2/jfs/t1/127687/23/11845/535507/5f575416Eb7b6520b/ae1ad000e5efbe83.jpg",
           },
-                    {
-            title: "title5",
+          title:
+            "卧派 实木床现代中式双人床主卧室家具婚床精品家具 999 普通款 单床 1800*2000",
+          price: "¥7655",
+        },
+        {
+          show: {
+            img: "https://img12.360buyimg.com/n7/jfs/t1/174017/28/27619/298936/62288253Edb0cc472/3aaa4b2935e881a7.jpg!q90",
           },
-          {
-            title: "title6",
+          title:
+            "双虎家私 岩板电视柜茶几现代简约小户型地柜餐桌客餐厅组合套装家用212 20KT212茶几电视柜+20KT212一桌四椅",
+          price: "¥3472",
+        },
+        {
+          show: {
+            img: "https://img14.360buyimg.com/n7/jfs/t1/135026/33/21225/171657/61dd3febE4aeed56c/fba548fab1f1ca91.jpg!q90",
           },
-          {
-            title: "title7",
+          title:
+            "卧派 沙发实木冬夏两用现代中式沙发客厅简约布艺小户型带储物组合套装家具 27储物 1+2+3 沙发",
+          price: "¥2334",
+        },
+        {
+          show: {
+            img: "https://img10.360buyimg.com/n6/jfs/t1/193066/12/17293/199047/6110e71eE3276f586/6e2182073eb793e0.jpg",
           },
-          {
-            title: "title8",
+          title:
+            "摩天 餐桌 大理石餐桌实木餐桌意式新中式餐桌椅组合餐厅家具 餐桌[大理石] 1.4M",
+          price: "¥1850",
+        },
+        {
+          show: {
+            img: "https://img14.360buyimg.com/n6/jfs/t25042/247/2226036716/143998/502af9ef/5bc70a6aNae9a5c77.jpg",
           },
-          {
-            title: "title9",
+          title:
+            "摩天 餐桌 北欧餐桌折叠伸缩餐桌椅组合餐厅家具 1桌4椅[大理石] 1.4M",
+          price: "¥2490",
+        },
+      ];
+      const newList = [
+        {
+          show: {
+            img: "https://img10.360buyimg.com/babel/s320x320_jfs/t1/136233/15/23861/137919/622770dbE6b3af1e2/fcfddcfa6d8672ab.jpg!cc_320x320.webp",
           },
-          {
-            title: "title10",
+          title:
+            "11 实木沙发客厅家具可拆洗小户型布艺沙发中式现代冬夏两用储物转角沙发组合 17 四人位+贵妃+茶几",
+          price: "¥112",
+        },
+        {
+          show: {
+            img: "https://img12.360buyimg.com/n2/jfs/t1/203270/9/1853/519484/611c69c4Ea39e6150/7b805156b99ecbbb.jpg",
           },
-          {
-            title: "title11",
+          title:
+            "卧派 电视柜 实木电视柜客厅家具现代中式简约伸缩电视机柜地柜709# 胡桃色 电视柜",
+          price: "¥289",
+        },
+        {
+          show: {
+            img: "https://img11.360buyimg.com/n2/jfs/t1/203350/12/1852/598042/611c64b6Eb7a7cbf5/d308b0b7f5af3e1e.jpg",
           },
-          {
-            title: "title12",
+          title:
+            "卧派 餐桌实木餐桌现代中式折叠餐桌伸缩饭桌家用方形圆形餐桌椅套装 实木 一桌六椅(903#餐椅*6)",
+          price: "¥908",
+        },
+        {
+          show: {
+            img: "https://img14.360buyimg.com/n2/jfs/t1/127687/23/11845/535507/5f575416Eb7b6520b/ae1ad000e5efbe83.jpg",
           },
+          title:
+            "卧派 实木床现代中式双人床主卧室家具婚床精品家具 999 普通款 单床 1800*2000",
+          price: "¥7655",
+        },
+        {
+          show: {
+            img: "https://img12.360buyimg.com/n7/jfs/t1/174017/28/27619/298936/62288253Edb0cc472/3aaa4b2935e881a7.jpg!q90",
+          },
+          title:
+            "双虎家私 岩板电视柜茶几现代简约小户型地柜餐桌客餐厅组合套装家用212 20KT212茶几电视柜+20KT212一桌四椅",
+          price: "¥3472",
+        },
+        {
+          show: {
+            img: "https://img14.360buyimg.com/n7/jfs/t1/135026/33/21225/171657/61dd3febE4aeed56c/fba548fab1f1ca91.jpg!q90",
+          },
+          title:
+            "卧派 沙发实木冬夏两用现代中式沙发客厅简约布艺小户型带储物组合套装家具 27储物 1+2+3 沙发",
+          price: "¥2334",
+        },
+        {
+          show: {
+            img: "https://img10.360buyimg.com/n6/jfs/t1/193066/12/17293/199047/6110e71eE3276f586/6e2182073eb793e0.jpg",
+          },
+          title:
+            "摩天 餐桌 大理石餐桌实木餐桌意式新中式餐桌椅组合餐厅家具 餐桌[大理石] 1.4M",
+          price: "¥1850",
+        },
+        {
+          show: {
+            img: "https://img14.360buyimg.com/n6/jfs/t25042/247/2226036716/143998/502af9ef/5bc70a6aNae9a5c77.jpg",
+          },
+          title:
+            "摩天 餐桌 北欧餐桌折叠伸缩餐桌椅组合餐厅家具 1桌4椅[大理石] 1.4M",
+          price: "¥2490",
+        },
+      ];
+      const sellList = [
+        {
+          show: {
+            img: "https://img10.360buyimg.com/babel/s320x320_jfs/t1/136233/15/23861/137919/622770dbE6b3af1e2/fcfddcfa6d8672ab.jpg!cc_320x320.webp",
+          },
+          title:
+            "12222 实木沙发客厅家具可拆洗小户型布艺沙发中式现代冬夏两用储物转角沙发组合 17 四人位+贵妃+茶几",
+          price: "¥112",
+        },
+        {
+          show: {
+            img: "https://img12.360buyimg.com/n2/jfs/t1/203270/9/1853/519484/611c69c4Ea39e6150/7b805156b99ecbbb.jpg",
+          },
+          title:
+            "卧派 电视柜 实木电视柜客厅家具现代中式简约伸缩电视机柜地柜709# 胡桃色 电视柜",
+          price: "¥289",
+        },
+        {
+          show: {
+            img: "https://img11.360buyimg.com/n2/jfs/t1/203350/12/1852/598042/611c64b6Eb7a7cbf5/d308b0b7f5af3e1e.jpg",
+          },
+          title:
+            "卧派 餐桌实木餐桌现代中式折叠餐桌伸缩饭桌家用方形圆形餐桌椅套装 实木 一桌六椅(903#餐椅*6)",
+          price: "¥908",
+        },
+        {
+          show: {
+            img: "https://img14.360buyimg.com/n2/jfs/t1/127687/23/11845/535507/5f575416Eb7b6520b/ae1ad000e5efbe83.jpg",
+          },
+          title:
+            "卧派 实木床现代中式双人床主卧室家具婚床精品家具 999 普通款 单床 1800*2000",
+          price: "¥7655",
+        },
+        {
+          show: {
+            img: "https://img12.360buyimg.com/n7/jfs/t1/174017/28/27619/298936/62288253Edb0cc472/3aaa4b2935e881a7.jpg!q90",
+          },
+          title:
+            "双虎家私 岩板电视柜茶几现代简约小户型地柜餐桌客餐厅组合套装家用212 20KT212茶几电视柜+20KT212一桌四椅",
+          price: "¥3472",
+        },
+        {
+          show: {
+            img: "https://img14.360buyimg.com/n7/jfs/t1/135026/33/21225/171657/61dd3febE4aeed56c/fba548fab1f1ca91.jpg!q90",
+          },
+          title:
+            "卧派 沙发实木冬夏两用现代中式沙发客厅简约布艺小户型带储物组合套装家具 27储物 1+2+3 沙发",
+          price: "¥2334",
+        },
+        {
+          show: {
+            img: "https://img10.360buyimg.com/n6/jfs/t1/193066/12/17293/199047/6110e71eE3276f586/6e2182073eb793e0.jpg",
+          },
+          title:
+            "摩天 餐桌 大理石餐桌实木餐桌意式新中式餐桌椅组合餐厅家具 餐桌[大理石] 1.4M",
+          price: "¥1850",
+        },
+        {
+          show: {
+            img: "https://img14.360buyimg.com/n6/jfs/t25042/247/2226036716/143998/502af9ef/5bc70a6aNae9a5c77.jpg",
+          },
+          title:
+            "摩天 餐桌 北欧餐桌折叠伸缩餐桌椅组合餐厅家具 1桌4椅[大理石] 1.4M",
+          price: "¥2490",
+        },
+      ];
+      // 接口未返回数据
+      switch (type) {
+        case "pop":
+          this.goods[type].list.push(...popList);
+          break;
+        case "new":
+          this.goods[type].list.push(...newList);
+          break;
+        case "sell":
+          this.goods[type].list.push(...sellList);
+          break;
+      }
+      // this.goods[type].page += 1;
 
-        ];
-        // 接口未返回数据
-        console.log('res = '+res);
-        this.goods[type].list.push(...jk);
-        this.goods[type].page += 1;
-
-        this.$refs.scroll.finishPullUp();
-      });
+      // this.$refs.scroll.finishPullUp();
+      // });
     },
     // 事件监听方法
     tabClick(index) {
@@ -188,11 +353,14 @@ export default {
           break;
         // 每一种情况都加break 提高运行效率
       }
-      this.$refs.tabControl1.currentIndex = index;
+      // this.$refs.tabControl1.currentIndex = index;
       this.$refs.tabControl2.currentIndex = index;
     },
     backClick() {
-      this.$ref.scroll.scrollTo();
+      console.log("回到顶部");
+      this.$refs.scroll.scrollTo(0, 0, 300);
+      // this.scroll.scrollTo(0, 0, 300)
+      // console.log(this.$refs.scroll.message);
     },
     contentScroll(postion) {
       // this.isJudge = (-position.y) > 1000;
@@ -201,11 +369,14 @@ export default {
 
       // 2.决定tabControl是否吸顶(positon: fixed)
     },
-    loadMore() {
-      this.getHomeGoods(this.currentType);
-    },
+    // loadMore() {
+    //   this.getHomeGoods(this.currentType);
+    // },
     swipeImageLoad() {
-      this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
+      console.log(this.$refs.tabControl.$el.offsetTop);
+      // console.log("33", this.$refs.tabControl2.$el.offsetTop);
+      // this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
+      // console.log("22", this.tabOffsetTop);
     },
     // 上拉加载更多
     // loadMore() {

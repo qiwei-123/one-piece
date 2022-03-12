@@ -1,71 +1,97 @@
 <template>
   <div>
-    <detail-nav-bar></detail-nav-bar>
-    <ul>
-      <li>详情页内容1</li>
-      <li>详情页内容2</li>
-      <li>详情页内容3</li>
-      <li>详情页内容4</li>
-      <li>详情页内容5</li>
-      <li>详情页内容6</li>
-      <li>详情页内容7</li>
-      <li>详情页内容8</li>
-      <li>详情页内容9</li>
-      <li>详情页内容10</li>
-      <li>详情页内容11</li>
-      <li>详情页内容12</li>
-      <li>详情页内容13</li>
-      <li>详情页内容14</li>
-      <li>详情页内容15</li>
-      <li>详情页内容16</li>
-      <li>详情页内容17</li>
-      <li>详情页内容18</li>
-      <li>详情页内容19</li>
-      <li>详情页内容20</li>
-      <li>详情页内容21</li>
-      <li>详情页内容22</li>
-      <li>详情页内容23</li>
-      <li>详情页内容24</li>
-      <li>详情页内容25</li>
-      <li>详情页内容26</li>
-      <li>详情页内容27</li>
-      <li>详情页内容28</li>
-      <li>详情页内容29</li>
-      <li>详情页内容30</li>
-      <li>详情页内容31</li>
-      <li>详情页内容32</li>
-      <li>详情页内容33</li>
-      <li>详情页内容34</li>
-      <li>详情页内容35</li>
-      <li>详情页内容36</li>
-      <li>详情页内容37</li>
-      <li>详情页内容38</li>
-      <li>详情页内容39</li>
-      <li>详情页内容40</li>
-      <li>详情页内容41</li>
-      <li>详情页内容42</li>
-      <li>详情页内容43</li>
-      <li>详情页内容44</li>
-      <li>详情页内容45</li>
-      <li>详情页内容46</li>
-      <li>详情页内容47</li>
-      <li>详情页内容48</li>
-      <li>详情页内容49</li>
-      <li>详情页内容50</li>
-    </ul>
+    <div id="back">
+      <img src="@/img/back.png" alt="back" @click="backClick" />
+      <span>详情页</span>
+    </div>
+    <div id="content">
+      <img :src="detailInfo.img" alt="" />
+      <p><span>商品名称 : </span>{{ detailInfo.title }}</p>
+      <p><span>价格 : </span>{{ detailInfo.price }}</p>
+      <p class="btn-text" @click="addClick">加入购物车</p>
+    </div>
+    <!-- <button class="btn">+</button> -->
   </div>
 </template>
 
 <script>
-import DetailNavBar from "./childComponent/DetailNavBar.vue";
-
 export default {
   name: "Detail",
-  components: {
-    DetailNavBar,
+  data() {
+    return {
+      detailInfo: this.$route.query,
+    };
+  },
+  methods: {
+    titleClick(index) {
+      this.currentIndex = index;
+    },
+    backClick() {
+      this.$router.back();
+      // 效果相同
+      // this.$router.go(-1);
+    },
+    addClick() {
+      let newList = [...this.$store.getters.list, this.detailInfo];
+      this.$store.dispatch("setList", newList);
+
+      console.log("111", this.$store.getters.list);
+    },
+  },
+  created() {
+    // this.$route.query;
+    console.log(this.$route.query);
   },
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
+#back {
+  width: 100%;
+  height: 35px;
+  line-height: 35px;
+  background-color: red;
+  text-align: center;
+  position: relative;
+  img {
+    width: 35px;
+    position: absolute;
+    left: 0;
+  }
+  span {
+    color: whitesmoke;
+  }
+}
+#content {
+  width: 100%;
+  background-color: #eee;
+  height: 100vh;
+  p span {
+    font-weight: 500;
+  }
+  img {
+    width: 100%;
+    height: 300px;
+    // padding: 3px;
+    margin: 2px 0;
+  }
+  // .btn {
+  //   font-size: 30px;
+  //   width: 50px;
+  //   height: 50px;
+  //   background-color: white;
+  // }
+  .btn-text {
+    font-size: 9px;
+    width: 80px;
+    height: 40px;
+    line-height: 40px;
+    // text-align: center;
+    text-align: center;
+    color: white;
+    background-color: red;
+    margin: 10px;
+    padding: 0 3px;
+  }
+}
 </style>

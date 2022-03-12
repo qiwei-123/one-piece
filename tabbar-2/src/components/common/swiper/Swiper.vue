@@ -164,6 +164,7 @@
       },
 
       touchEnd: function (e) {
+        console.log(e);
         // 1.获取移动的距离
         let currentMove = Math.abs(this.distance);
 

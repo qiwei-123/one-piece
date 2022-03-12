@@ -2,7 +2,6 @@
   <div class="tab-bar-item" @click="itemClick">
     <div v-if="!isActive"><slot name="item-icon"></slot></div>
     <div v-else><slot name="item-icon-active"></slot></div>
-    <!--  -->
     <!-- div包起来 替换时插槽被完全替换 动态绑定的class 无法显示 -->
     <div :style="activeStyle"><slot name="item-text"></slot></div>
   </div>
@@ -49,7 +48,7 @@ export default {
   text-align: center;
   /* tab-bar 高度都为49px 但此处无需设置 可能是iphone默认设置了 */
   height: 49px;
-  font-size: 12px;
+  font-size: 10px;
   /* 怪异盒模型 */
   padding-top: 5px;
   box-sizing: border-box;
@@ -57,17 +56,17 @@ export default {
 /* 去除图片与文字间默认的3px */
 /* vertical-align: middle;  */
 .tab-bar-item .spf {
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   margin-top: 5px;
   vertical-align: middle;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 .tab-bar-item .spf2 {
-  width: 21px;
-  height: 21px;
+  width: 18px;
+  height: 18px;
   margin-top: 3px;
   vertical-align: middle;
-  margin-bottom: 2px;
+  margin-bottom: 1px;
 }
 </style>

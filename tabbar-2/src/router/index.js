@@ -7,6 +7,7 @@ const Home = () => import('../View/Home/Home')
 const Cart = () => import('../View/Cart/Cart')
 const Category = () => import('../View/Category/Category')
 const Profile = () => import('../View/Profile/Profile')
+const Question = () => import('../View/Profile/Question/Question')
 const Detail = () => import('../View/detail/Detail')
 
 // 1.安装插件
@@ -32,7 +33,14 @@ const routes = [
   },
   {
     path: '/Profile',
-    component: Profile
+    component: Profile,
+    children: [
+      {
+        path: '/Question',
+        component: Question
+      }
+
+    ]
   },
   {
     path: '/Detail',

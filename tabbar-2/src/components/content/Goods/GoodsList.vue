@@ -11,7 +11,9 @@
 import GoodsListItem from "./GoodsListItem.vue";
 export default {
   name: "GoodsList",
-  components: { GoodsListItem },
+  components: {
+    GoodsListItem,
+  },
   props: {
     // 注意类型定义 接到的是对象
     goods: {
@@ -24,5 +26,12 @@ export default {
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
+.goods {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  // margin-top: 10px;
+  padding: 2px;
+}
 </style>

@@ -1,67 +1,6 @@
 <template>
   <div class="wrapper">
-    <ul class="content">
-      <li>假装这里有内容1</li>
-      <li>假装这里有内容2</li>
-      <li>假装这里有内容3</li>
-      <li>假装这里有内容4</li>
-      <li>假装这里有内容5</li>
-      <li>假装这里有内容6</li>
-      <li>假装这里有内容7</li>
-      <li>假装这里有内容8</li>
-      <li>假装这里有内容9</li>
-      <li>假装这里有内容10</li>
-      <li>假装这里有内容11</li>
-      <li>假装这里有内容12</li>
-      <li>假装这里有内容13</li>
-      <li>假装这里有内容14</li>
-      <li>假装这里有内容15</li>
-      <li>假装这里有内容16</li>
-      <li>假装这里有内容17</li>
-      <li>假装这里有内容18</li>
-      <li>假装这里有内容19</li>
-      <li>假装这里有内容20</li>
-      <li>假装这里有内容21</li>
-      <li>假装这里有内容22</li>
-      <li>假装这里有内容23</li>
-      <li>假装这里有内容24</li>
-      <li>假装这里有内容25</li>
-      <li>假装这里有内容26</li>
-      <li>假装这里有内容27</li>
-      <li>假装这里有内容28</li>
-      <li>假装这里有内容29</li>
-      <li>假装这里有内容30</li>
-      <li>假装这里有内容31</li>
-      <li>假装这里有内容32</li>
-      <li>假装这里有内容33</li>
-      <li>假装这里有内容34</li>
-      <li>假装这里有内容35</li>
-      <li>假装这里有内容36</li>
-      <li>假装这里有内容37</li>
-      <li>假装这里有内容38</li>
-      <li>假装这里有内容39</li>
-      <li>假装这里有内容40</li>
-      <li>假装这里有内容41</li>
-      <li>假装这里有内容42</li>
-      <li>假装这里有内容43</li>
-      <li>假装这里有内容44</li>
-      <li>假装这里有内容45</li>
-      <li>假装这里有内容46</li>
-      <li>假装这里有内容47</li>
-      <li>假装这里有内容48</li>
-      <li>假装这里有内容49</li>
-      <li>假装这里有内容50</li>
-      <li>假装这里有内容51</li>
-      <li>假装这里有内容52</li>
-      <li>假装这里有内容53</li>
-      <li>假装这里有内容54</li>
-      <li>假装这里有内容55</li>
-      <li>假装这里有内容56</li>
-      <li>假装这里有内容57</li>
-      <li>假装这里有内容58</li>
-      <li>假装这里有内容59</li>
-      <li>假装这里有内容60</li>
-    </ul>
+    <feature-view />
   </div>
 </template>
 
@@ -71,8 +10,10 @@
 // 缺点 卡顿 不如 better-scroll 丝滑
 // better-scroll 滚动条拖拽到底部时 会有空白的空间
 // 若在固定高度内隐藏 只需overflow: hidden;
+import FeatureView from "../Home/childSwiper/FeatureView.vue";
 export default {
   name: "Category",
+  components: { FeatureView },
 };
 </script>
 

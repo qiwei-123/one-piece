@@ -1,16 +1,68 @@
 <template>
   <div id="tab-bar">
-    <slot></slot>
+    <TabbarItem path="/home" activeColor="red">
+      <template v-slot:item-icon>
+        <!-- <span class="iconfont icon-shouye spf" alt="" /> -->
+        <span><img src="@/img/shouye.png" alt="" class="spf" /></span>
+      </template>
+      <template v-slot:item-icon-active>
+        <span><img src="@/img/shouye-active.png" alt="" class="spf2" /> </span>
+      </template>
+      <template #item-text>
+        <div>首页</div>
+      </template>
+    </TabbarItem>
+    <TabbarItem path="/category" activeColor="red">
+      <template v-slot:item-icon>
+        <!-- <span class="iconfont icon-fenlei spf" alt="" /> -->
+        <span><img src="@/img/fenlei.png" alt="" class="spf" /></span>
+      </template>
+      <template v-slot:item-icon-active>
+        <span><img src="@/img/fenlei-active.png" alt="" class="spf2" /></span>
+      </template>
+      <template v-slot:item-text>
+        <div>分类</div>
+      </template>
+    </TabbarItem>
+    <TabbarItem path="/cart" activeColor="red">
+      <template v-slot:item-icon>
+        <!-- <span class="iconfont icon-gouwuche1 spf" alt="" /> -->
+        <span><img src="@/img/shopcart.png" alt="" class="spf" /></span>
+      </template>
+      <template v-slot:item-icon-active>
+        <span><img src="@/img/shopcart-active.png" alt="" class="spf2" /></span>
+      </template>
+      <template v-slot:item-text>
+        <div>购物车</div>
+      </template>
+    </TabbarItem>
+    <TabbarItem path="/profile" activeColor="red">
+      <template v-slot:item-icon>
+        <!-- <span class="iconfont icon-wode spf" alt="" /> -->
+        <span><img src="@/img/wode.png" alt="" class="spf" /></span>
+      </template>
+      <template v-slot:item-icon-active>
+        <span><img src="@/img/wode-active.png" alt="" class="spf2" /></span>
+      </template>
+      <template v-slot:item-text>
+        <div>我的</div>
+      </template>
+    </TabbarItem>
   </div>
 </template>
 
 <script>
+import TabbarItem from "../../common/TabbarItem/TabbarItem.vue";
+
 export default {
-  name: "tabbar",
+  name: "Tabbar",
+  components: {
+    TabbarItem,
+  },
 };
 </script>
 
-<style>
+<style lang="scss" scoped>
 #tab-bar {
   display: flex;
   /* 为其设置背景颜色 */

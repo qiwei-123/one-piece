@@ -1,8 +1,8 @@
-import Vue from 'vue'
-import App from './App.vue'
+import Vue from 'vue';
+import App from './App.vue';
 import router from "./router/index";
-// import '../assets/img/font_2849704_x6m41w95uc/iconfont';
 import '../assets/css/base.css';
+import store from './store';
 
 
 Vue.config.productionTip = false
@@ -13,5 +13,6 @@ Vue.prototype.$bus = new Vue()
 new Vue({
   el: '#app',
   router,
+  store,
   render: h => h(App),
 }).$mount('#app')

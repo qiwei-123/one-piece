@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <!-- <div>
     <nav-bar>
       <div slot="left">
         <img src="" alt="back" @click="backClick" />
       </div>
-      <div slot="center" class="title">
+      <!-- <div slot="center" class="title">
         <div
           v-for="(item, index) in titles"
           :key="index"
@@ -14,9 +14,9 @@
         >
           {{ item }}
         </div>
-      </div>
+      </div> 
     </nav-bar>
-  </div>
+  </div> -->
 </template>
 
 <script>
@@ -24,25 +24,25 @@ import NavBar from "../../../components/common/navbar/NavBar.vue";
 
 export default {
   name: "DetailNavBar",
-  data() {
-    return {
-      titles: ["商品", "参数", "评论", "推荐"],
-      currentIndex: 0,
-    };
-  },
-  components: {
-    NavBar,
-  },
-  methods: {
-    titleClick(index) {
-      this.currentIndex = index;
-    },
-    backClick() {
-      this.$router.back();
-      // 效果相同
-      // this.$router.go(-1);  
-    },
-  },
+  // data() {
+  //   return {
+  //     titles: ["商品", "参数", "评论", "推荐"],
+  //     currentIndex: 0,
+  //   };
+  // },
+  // components: {
+  //   NavBar,
+  // },
+  // methods: {
+  //   titleClick(index) {
+  //     this.currentIndex = index;
+  //   },
+  //   backClick() {
+  //     this.$router.back();
+  //     // 效果相同
+  //     // this.$router.go(-1);
+  //   },
+  // },
 };
 </script>
 

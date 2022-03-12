@@ -31,7 +31,7 @@ export default {
   },
   methods: {
     imageLoad() {
-      this.$emit('swiperImageLoad')
+      this.$emit("swiperImageLoad");
     },
   },
   // created(){
